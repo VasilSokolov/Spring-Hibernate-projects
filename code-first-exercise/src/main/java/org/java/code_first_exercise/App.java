@@ -22,7 +22,6 @@ public class App
         em.getTransaction().commit();
         
         em.close();
-        System.out.println("end");
-        
-    }
+        //end
+		System.out.println("end");    }
 }
