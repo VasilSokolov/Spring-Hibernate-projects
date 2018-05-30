@@ -9,7 +9,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-@Entity
+
 @Table(name = "students")
 public class Student extends Person {
 
@@ -40,6 +40,7 @@ public class Student extends Person {
 	public Set<Course> getEnrolledCourses() {
 		return enrolledCourses;
 	}
+	
 	public void setEnrolledCourses(Set<Course> enrolledCourses) {
 		this.enrolledCourses = enrolledCourses;
 	}	

@@ -12,7 +12,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-@Entity
+
 @Table(name = "courses")
 public class Course {
 
@@ -93,7 +93,7 @@ public class Course {
 		this.teacher = teacher;
 	}
 	
-	@ManyToMany(targetEntity = Student.class)
+	@ManyToMany(mappedBy = "enrolledCourses")
 	public Set<Student> getStudents() {
 		return students;
 	}
