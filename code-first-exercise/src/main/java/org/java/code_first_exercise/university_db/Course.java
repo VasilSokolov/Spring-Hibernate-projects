@@ -9,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -21,6 +22,7 @@ public class Course {
 	private Date startDate;
 	private Date endDate;
 	private Integer credits;
+	private Teacher teacher;
 	private Set<Student> students;
 	
 	public Course() {
@@ -82,6 +84,15 @@ public class Course {
 		this.credits = credits;
 	}
 
+	@ManyToOne(targetEntity = Teacher.class)
+	public Teacher getTeacher() {
+		return teacher;
+	}
+
+	public void setTeacher(Teacher teacher) {
+		this.teacher = teacher;
+	}
+	
 	@ManyToMany(targetEntity = Student.class)
 	public Set<Student> getStudents() {
 		return students;
@@ -90,6 +101,4 @@ public class Course {
 	public void setStudents(Set<Student> students) {
 		this.students = students;
 	}
-	
-	
 }
