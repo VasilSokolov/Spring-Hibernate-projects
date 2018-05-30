@@ -23,6 +23,5 @@ public class App
         
         em.close();
         //end
-    //
     }
 }
