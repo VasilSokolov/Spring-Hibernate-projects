@@ -45,6 +45,4 @@ public class CreditCard extends BasicBillingDetail {
 	public void setExpirationYear(Date expirationYear) {
 		this.expirationYear = expirationYear;
 	}
-	
-	
 }

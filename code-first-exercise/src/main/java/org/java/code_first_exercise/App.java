@@ -15,13 +15,12 @@ public class App
         System.out.println( "Hello World!" );
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("exercise_db");
         
-        EntityManager em = emf.createEntityManager();
+        EntityManager em = emf.createEntityManager();        
         
         em.getTransaction().begin();
         
         em.getTransaction().commit();
         
         em.close();
-        //ends
     }
 }
