@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -27,11 +29,12 @@ public class Book {
 	private Author author;
 	private Set<Category> categories;
 	
-	public Book(Set<Category> categories) {
+	public Book() {
 		this.categories = new HashSet<>();
 	}
 
 	@Id
+	@Column(name = "id")
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getBookId() {
 		return bookId;
@@ -59,6 +62,7 @@ public class Book {
 		this.description = description;
 	}
 
+	@Column(nullable = false)
 	public String getEditionType() {
 		return editionType;
 	}
@@ -67,6 +71,7 @@ public class Book {
 		this.editionType = editionType;
 	}
 
+	@Column(scale = 2, precision = 19, nullable = false)
 	public BigDecimal getPrice() {
 		return price;
 	}
@@ -75,6 +80,7 @@ public class Book {
 		this.price = price;
 	}
 
+	@Column(nullable = false)
 	public Integer getCopies() {
 		return copies;
 	}
@@ -91,6 +97,7 @@ public class Book {
 		this.releasDate = releasDate;
 	}
 
+	@Column(nullable = false)
 	public String getAgeRestriction() {
 		return ageRestriction;
 	}
@@ -99,6 +106,8 @@ public class Book {
 		this.ageRestriction = ageRestriction;
 	}
 
+	@ManyToOne(optional = false)
+//	@JoinColumn(nullable = false)
 	public Author getAuthor() {
 		return author;
 	}
@@ -107,6 +116,10 @@ public class Book {
 		this.author = author;
 	}
 
+//	@JoinTable(name = "books_categories",
+//			joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+//			inverseJoinColumns = @JoinColumn(name ="category_id", referencedColumnName = "id"))
+	@ManyToMany
 	public Set<Category> getCategories() {
 		return categories;
 	}

@@ -9,6 +9,7 @@ public class BookShopSystemApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(BookShopSystemApplication.class, args);
 		
-		System.out.println("Start");
+//		System.out.println("Start");
+//		Resttempl
 	}
 }
