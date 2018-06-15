@@ -55,9 +55,9 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-//		initAuthors();
-//		initCategories();
-//		initBooks();
+		initAuthors();
+		initCategories();
+		initBooks();
 		
 		allBookstitleAfter2000y();
 	}
@@ -70,7 +70,7 @@ public class Runner implements CommandLineRunner {
 		
 		List<String> allAuthors =  Files.readAllLines(Paths.get(AUTHORS_RESOURCE_FILE));
 		
-		AgeRestriction restriction = AgeRestriction.valueOf(allAuthors.get(0));
+//		AgeRestriction restriction = AgeRestriction.valueOf(allAuthors.get(0));
 		
 		List<Author> listAuthors = allAuthors.stream().map(s -> {
 			String[]  authorNames = s.split("\\s+");

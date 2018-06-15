@@ -11,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
 	List<Book> findAllByReleasDateAfter(Date releaseDate);
+	
+//	List<Book> findAllByAuthorage();
 }
