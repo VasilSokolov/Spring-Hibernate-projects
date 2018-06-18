@@ -26,11 +26,11 @@ public class BookShopSystemApplication implements ApplicationRunner{
 
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		log.debug("Debugging log");
-		log.info("Info log");
-		log.warn("Hey, This is a warning!");
-		log.error("Oops! We have an Error. OK");
-		log.fatal("Damn! Fatal error. Please fix me.");
+//		log.debug("Debugging log");
+//		log.info("Info log");
+//		log.warn("Hey, This is a warning!");
+//		log.error("Oops! We have an Error. OK");
+//		log.fatal("Damn! Fatal error. Please fix me.");
         Collection<String> lists = new ArrayList<String>(Arrays.asList("Mint", "Netel"));
         log.info(lists.toString());
 	}

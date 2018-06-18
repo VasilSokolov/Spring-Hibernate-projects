@@ -1,15 +1,14 @@
 package org.bookshop.system.app;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.BigDecimal;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.Year;
-import java.time.temporal.ChronoField;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -55,12 +54,23 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		initAuthors();
-		initCategories();
-		initBooks();
+//		initAuthors();
+//		initCategories();
+//		initBooks();
 		
-		allBookstitleAfter2000y();
+//		allBookstitleAfter2000y();
+
+		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//		allBookTitles(reader.readLine());
+//		booksReleasedBefore(reader.readLine());
+		
+		deleteBooksByMinCopies(reader.readLine());
 	}
+	
+//	public void testBookrepository() throws IOException {
+//		BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+//		System.out.println(bookRepository.getAllBooksTitleByAgeRestriction(reader.readLine()).size());
+//	}
 
 	private void initAuthors() throws IOException {
 //		BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(new File(AUTHORS_RESOURCE_FILE))));
@@ -148,5 +158,24 @@ public class Runner implements CommandLineRunner {
 //		long y = year.getLong(ChronoField.YEAR);
 //		Date dt = new Date(y * 1000);
 		
+	}
+
+	private void allBookTitles(String ageRestriction) {
+		AgeRestriction ar = AgeRestriction.valueOf(ageRestriction.toUpperCase());
+		this.bookService.getAllBooksTitleByAgeRestriction(ar).forEach(System.out::println);;
+	}
+
+	private void booksReleasedBefore(String dateString) throws ParseException {
+		Date beforeDate = new SimpleDateFormat("dd-MM-yyyy").parse(dateString);
+		
+		this.bookService.allBooksByReleaseDateBefore(beforeDate).forEach(System.out::println);
+	}
+
+	private void deleteBooksByMinCopies(String minCopies) {
+		Integer min = Integer.parseInt(minCopies);
+		
+		long deleted = this.bookService.deleteAllBySomeNumber(min);
+		
+		System.out.printf("%d books were deleted", deleted);
 	}
 }
