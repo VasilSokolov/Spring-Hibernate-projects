@@ -14,10 +14,6 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-
-import org.springframework.validation.annotation.Validated;
-
-import app.game.store.model.validator.ImageUrlValidator;
 import app.game.store.model.validator.URL;
 
 @Entity
@@ -83,7 +79,7 @@ public class Game {
 		this.size = size;
 	}
 
-	@Column(precision=2, scale = 20)
+	@Column(precision=20, scale = 2)
 	public BigDecimal getPrice() {
 		return price;
 	}
