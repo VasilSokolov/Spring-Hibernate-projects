@@ -1,5 +1,6 @@
 package app.game.store.services.game;
 
+import app.game.store.model.entity.Game;
 import app.game.store.repositories.GameRepository;
 
 import org.modelmapper.ModelMapper;
@@ -24,6 +25,11 @@ public class GameServiceImpl implements GameService {
 	public void test() {
 		String debug="";
 		System.out.println(debug);
+	}
+
+	@Override
+	public Game create(Game game) {
+		return gameRepository.save(game);
 	}
 
 }

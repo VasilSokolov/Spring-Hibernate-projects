@@ -29,7 +29,8 @@ public class Runner implements CommandLineRunner{
 		this.employeeService = employeeService;
 	}
 
-	public Employee mockDate() throws ParseException {
+	//Mock data for employee
+	public Employee mockData() throws ParseException {
 		String birthday = "12-12-2006";
 		Date birthdayDate = new SimpleDateFormat("dd-MM-yyyy").parse(birthday);
 		Address address = new Address("street Tintynov", new City("Sofia"));
@@ -43,9 +44,12 @@ public class Runner implements CommandLineRunner{
 
 	@Override
 	public void run(String... args) throws Exception {
-		Employee employee = mockDate();
-		EmployeeDto emplDto = MapperUtil.convertEmployee(employee);
-		System.out.println("Employee Dto" + emplDto);
+		Employee employee = mockData();
+//		EmployeeDto test1 = MapperUtil.convertEmployee(employee);
+//		EmployeeDto test2 = MapperUtil.convertEmployeeWithExpressionMap(employee);
+		EmployeeDto test2 = MapperUtil.convertEmployeeWithTypeMap(employee);
+		
+		System.out.println("Employee Dto" + test2);
 		log.info("Success END");
 	}
 

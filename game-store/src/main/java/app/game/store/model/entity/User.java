@@ -21,7 +21,7 @@ public class User {
 	private Set<Game> games;
 	private Set<Role> roles;
 	
-	public User(Set<Game> games) {
+	public User() {
 		this.games = new HashSet<>();
 		this.roles = new HashSet<>();
 	}

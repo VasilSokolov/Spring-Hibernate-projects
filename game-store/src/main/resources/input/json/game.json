@@ -1,0 +1,22 @@
+{
+	"id": 1,
+	"title": "Tittle",
+	"youtubeId": "www.youtube.com",
+	"imageUrl": "www.image.org",
+	"size": 20.5,
+	"price": 5000.25,
+	"description": "Description text",
+	"releaseDate": "10-05-2015",
+	"users": [
+		{
+			"email": "www.abv.bg",
+			"password": "Ivan1",
+			"fullName": "Ivan"
+		},
+		{
+			"email": "www.abv1.bg",
+			"password": "Ivan2",
+			"fullName": "Ivancho"
+		}
+	]
+}
