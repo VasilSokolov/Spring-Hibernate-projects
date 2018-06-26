@@ -1,6 +1,5 @@
 package app.game.store;
 
-import java.io.Serializable;
 import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
@@ -36,6 +35,7 @@ public class CmdRunner implements CommandLineRunner {
 	@Autowired
 	private Serializer serializer;
 	
+	
 	@Autowired
 	public CmdRunner(GameService gameService, UserService userService, RoleService roleService) {
 		this.gameService = gameService;
@@ -64,8 +64,9 @@ public class CmdRunner implements CommandLineRunner {
 	
 	public void importGameJson() throws ParseException {
 		GameDto gameDto = serializer.deserialize(GameDto.class, GAME_INPUT_JSON);
-		
-		gameDto(gameDto);
+		if (gameDto != null) {
+			gameDto(gameDto);
+		}
 	}
 
 }
