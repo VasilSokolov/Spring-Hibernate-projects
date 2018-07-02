@@ -1,11 +1,12 @@
 package app.products.shop.services.product;
 
 import app.products.shop.model.dto.binding.product.ProductCreateBindingModel;
+import app.products.shop.model.dto.views.product.ProductInRangeViewModel;
 import app.products.shop.model.entity.Product;
 import app.products.shop.repositories.ProductRepository;
 
 import java.lang.reflect.Type;
-import java.util.ArrayList;
+import java.math.BigDecimal;
 import java.util.Collection;
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class ProductServiceImpl implements ProductService {
 		Type listType = new TypeToken<List<Product>>() {}.getType();
 		Collection<Product> products = this.modelMapper.map(models, listType);
 		this.productRepository.saveAll(products);
+	}
+
+	@Override
+	public List<ProductInRangeViewModel> getAllByRangeWithoutBuyer(int from, int to) {
+		return this.productRepository.getAllByRangeWithoutBuyer(new BigDecimal(from), new BigDecimal(to));
 	}
 
 }

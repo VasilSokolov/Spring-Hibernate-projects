@@ -29,7 +29,7 @@ public class CmdRunner implements CommandLineRunner {
 	private final RoleService roleService;
 	private final Map<Long, User> authenticatedUser;
 	
-	private static final String GAME_INPUT_JSON = "input/json/game.json";
+	private static final String GAME_INPUT_JSON = "/input/json/game.json";
 	private static final String GAME_OUTPUT_JSON = "src/main/resources/output/json/game.json";
 	
 	@Autowired

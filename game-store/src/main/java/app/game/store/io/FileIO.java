@@ -25,34 +25,34 @@ public class FileIO {
 		//Get file from resources folder
 //		ClassLoader classLoader = getClass().getClassLoader();
 //		File file = new File(classLoader.getResource(fileName).getFile());
-//		BufferedReader reader = null;
-//		try {
-//			File file2w = ResourceUtils.getFile(this.getClass().getResource("input/json/game.json"));
-//			ClassLoader classLoader = getClass().getClassLoader();
-//			File file = new File(classLoader.getResource("game.json").getFile());
-//			System.out.println(file.getAbsolutePath());
-//			
-//			FileReader fr = new FileReader("input/json/game.json");
-//			
-//			reader = new BufferedReader(fr);
-//			System.out.println("Readerrr  " + reader);
-//			String line = null;
-//			while ((line = reader.readLine()) != null) {
-//				
-//				fileContent.append(line);
-//			}
-//			
-//		} catch (FileNotFoundException fnf) {
-//			fnf.printStackTrace();
-//			fnf.getMessage();
-//			fnf.getCause();
-//		} catch (Exception e) {
-//			e.getMessage();
-//			e.getCause();
-//		} finally {
-//			System.out.println("");
-////				classLoader.close();
-//		}
+		BufferedReader reader = null;
+		try {
+			File file2w = ResourceUtils.getFile(this.getClass().getResource(fileName));
+			ClassLoader classLoader = getClass().getClassLoader();
+			File file = new File(classLoader.getResource(fileName).getFile());
+			System.out.println(file.getAbsolutePath());
+			
+			FileReader fr = new FileReader(fileName);
+			
+			reader = new BufferedReader(fr);
+			System.out.println("Readerrr  " + reader);
+			String line = null;
+			while ((line = reader.readLine()) != null) {
+				
+				fileContent.append(line);
+			}
+			
+		} catch (FileNotFoundException fnf) {
+			fnf.printStackTrace();
+			fnf.getMessage();
+			fnf.getCause();
+		} catch (Exception e) {
+			e.getMessage();
+			e.getCause();
+		} finally {
+			System.out.println("");
+//				classLoader.close();
+		}
 		
 		return fileContent.toString();		
 	}
