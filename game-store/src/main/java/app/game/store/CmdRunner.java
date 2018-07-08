@@ -5,9 +5,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.transaction.Transactional;
+import javax.validation.Validation;
+import javax.validation.Validator;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -33,7 +36,12 @@ public class CmdRunner implements CommandLineRunner {
 	private static final String GAME_OUTPUT_JSON = "src/main/resources/output/json/game.json";
 	
 	@Autowired
+	@Qualifier(value = "JsonSerializer")
 	private Serializer serializer;
+	
+	@Autowired
+	@Qualifier(value = "XMLMarshalling")
+	private Serializer marshalling;
 	
 	
 	@Autowired
@@ -68,5 +76,9 @@ public class CmdRunner implements CommandLineRunner {
 			gameDto(gameDto);
 		}
 	}
+	
+	
+	
+	Validator validator = Validation.buildDefaultValidatorFactory().getValidator();
 
 }

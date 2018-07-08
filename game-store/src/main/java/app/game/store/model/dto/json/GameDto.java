@@ -4,20 +4,37 @@ import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Set;
 
-import com.google.gson.annotations.Expose;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlElementWrapper;
+import javax.xml.bind.annotation.XmlRootElement;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
+@XmlRootElement(name = "game")
+@XmlAccessorType(value = XmlAccessType.FIELD)
 public class GameDto {
 
-	@Expose
+	@Expose(serialize = true, deserialize = false)
+	@XmlAttribute(name = "id")
 	private Long id;
 
 	@Expose
+	@NotNull
+	@Size(min = 2, max = 20, message = "Invalid title, must be between 2 and 30")
+	@XmlElement
 	private String title;
 
 	@Expose
 	private String youtubeId;
 
 	@Expose
+	@SerializedName("imageUrk")
 	private String imageUrl;
 
 	@Expose
@@ -33,6 +50,8 @@ public class GameDto {
 	private Date releaseDate;
 	
 	@Expose
+	@XmlElementWrapper(name = "users")
+	@XmlElement(name = "user")
 	private Set<UserDto> users;
 
 	public GameDto() {

@@ -21,6 +21,9 @@ import org.springframework.util.StreamUtils;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import app.products.shop.io.reader.Reader;
+import app.products.shop.io.writer.Writer;
+import app.products.shop.io.xmlparser.XmlParser;
 import app.products.shop.model.dto.binding.category.CategoryCreateBindingModel;
 import app.products.shop.model.dto.binding.product.ProductCreateBindingModel;
 import app.products.shop.model.dto.binding.user.UserCreateBindingModel;
@@ -33,6 +36,9 @@ import app.products.shop.services.user.UserService;
 @Transactional
 public class Runner implements CommandLineRunner {
 
+
+	private static final String USER_XML_FILE_LOCATION = "/inputXml/products.xml";
+	
 	private static final String USER_JSON_FILE_LOCATION = "/inputJson/users.json";
 	private static final String PRODUCTS_JSON_FILE_LOCATION = "/inputJson/products.json";
 	private static final String CREATE_PRODUCTS_JSON_FILE_LOCATION = "/outputJson/products-in-range.json";
@@ -41,15 +47,22 @@ public class Runner implements CommandLineRunner {
 	private final UserService userService;
 	private final ProductService productService;
 	private final CategoryService categoryService;
+	private final Reader reader;
+	private final Writer writer;
+	private final XmlParser xmlParser;
 
 	private final Gson gson;
 
 	@Autowired
-	public Runner(UserService userService, ProductService productService, CategoryService categoryService, Gson gson) {
+	public Runner(UserService userService, ProductService productService, 
+			CategoryService categoryService, Gson gson, Reader reader, Writer writer, XmlParser xmlParser) {
 		this.userService = userService;
 		this.productService = productService;
 		this.categoryService = categoryService;
 		this.gson = gson;
+		this.reader = reader;
+		this.writer = writer;
+		this.xmlParser = xmlParser;
 	}
 
 	@Override
@@ -58,35 +71,45 @@ public class Runner implements CommandLineRunner {
 //		this.seedProducts();
 //		this.seedCategories();
 		
-		this.jsonOutputProductViewModels();
+		this.xmlViewModel();
+	}
+	
+	private void xmlViewModel() {
+		String userXml = this.reader.readLines(USER_XML_FILE_LOCATION);
+		UserCreateBindingModel[] users = this.xmlParser.deserialize(userXml, UserCreateBindingModel[].class);
 	}
 	
 	private void jsonOutputProductViewModels() {
-		List<ProductInRangeViewModel> viewModel = this.productService.getAllByRangeWithoutBuyer(500, 1000);
-		String jsonOutput = this.gson.toJson(viewModel);
+		
+//		List<ProductInRangeViewModel> viewModel = this.productService.getAllByRangeWithoutBuyer(500, 1000);
+//		String jsonOutput = this.gson.toJson(viewModel);
+//		this.writer.writeToFile(jsonOutput, CREATE_PRODUCTS_JSON_FILE_LOCATION);
+		
 //		System.out.println(jsonOutput);
 		
-		this.writeToFile(CREATE_PRODUCTS_JSON_FILE_LOCATION, jsonOutput);
+//		this.writeToFile(CREATE_PRODUCTS_JSON_FILE_LOCATION, jsonOutput);
+		
 		
 //		o.forEach(System.out::println);
 //		System.out.println(viewModel.toString());
 	}
 	
-	private void writeToFile(String fileName, String src) {
-		try {
-			String mainPath = System.getProperty("user.dir") + "/src/main/resources";
-			FileWriter writer = new FileWriter(new File(mainPath + fileName));
-			writer.write(src);
-			writer.flush();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
+//	private void writeToFile(String fileName, String src) {
+//		try {
+//			String mainPath = System.getProperty("user.dir") + "/src/main/resources";
+//			FileWriter writer = new FileWriter(new File(mainPath + fileName));
+//			writer.write(src);
+//			writer.flush();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//	}
 	
 	private void seedCategories() {
-		InputStream inputStream = this.loadData(CATEGORIES_JSON_FILE_LOCATION);
-		String loader = readAllData(inputStream);
+//		InputStream inputStream = this.loadData(CATEGORIES_JSON_FILE_LOCATION);
+//		String loader = readAllData(inputStream);
+		String loader = this.reader.readLines(CATEGORIES_JSON_FILE_LOCATION);
 		Type listType = new TypeToken<ArrayList<CategoryCreateBindingModel>>() {}.getType();
 		List<CategoryCreateBindingModel> categories = this.gson.fromJson(loader, listType);
 		
@@ -97,8 +120,9 @@ public class Runner implements CommandLineRunner {
 	}
 	
 	private void seedProducts() {
-		InputStream inputStream = this.loadData(PRODUCTS_JSON_FILE_LOCATION);
-		String loader = readAllData(inputStream);
+//		InputStream inputStream = this.loadData(PRODUCTS_JSON_FILE_LOCATION);
+//		String loader = readAllData(inputStream);
+		String loader = this.reader.readLines(PRODUCTS_JSON_FILE_LOCATION);
 		Type listType = new TypeToken<ArrayList<ProductCreateBindingModel>>() {}.getType();
 		List<ProductCreateBindingModel> products = this.gson.fromJson(loader, listType);
 		
@@ -133,8 +157,9 @@ public class Runner implements CommandLineRunner {
 	}
 	
 	private void seedUsers() {
-		InputStream inputStream = this.loadData(USER_JSON_FILE_LOCATION);
-		String loader = readAllData(inputStream);
+//		InputStream inputStream = this.loadData(USER_JSON_FILE_LOCATION);
+//		String loader = readAllData(inputStream);
+		String loader = this.reader.readLines(USER_JSON_FILE_LOCATION);
 		Type listType = new TypeToken<ArrayList<UserCreateBindingModel>>() {}.getType();
 		List<UserCreateBindingModel> usersList = this.gson.fromJson(loader, listType);		
 		this.userService.saveAll(usersList);
@@ -149,10 +174,10 @@ public class Runner implements CommandLineRunner {
 ////		reader.lines().forEach(System.out::println);
 	}
 	
-	private void showResultFromList(Collection<Object> list) {
-		for (Object t : list) {
-		System.out.println(t.toString());
-	}
+	private <T> void showResultFromList(Iterable<T> list) {
+		for (T s : list) {
+			System.out.println(s.toString());
+		}
 	}
 	
 	private InputStream loadData(String fileLocation) {
@@ -160,14 +185,14 @@ public class Runner implements CommandLineRunner {
 		return stream;
 	}
 	
-	private String readAllData(InputStream stream) {
-		try {
-			return StreamUtils.copyToString(stream, Charset.defaultCharset());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
-	}
+//	private String readAllData(InputStream stream) {
+//		try {
+//			return StreamUtils.copyToString(stream, Charset.defaultCharset());
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		return null;
+//	}
 
 }
