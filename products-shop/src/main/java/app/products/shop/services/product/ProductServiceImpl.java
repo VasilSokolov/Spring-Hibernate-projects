@@ -39,7 +39,8 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductInRangeViewModel> getAllByRangeWithoutBuyer(int from, int to) {
-		return this.productRepository.getAllByRangeWithoutBuyer(new BigDecimal(from), new BigDecimal(to));
+		List<ProductInRangeViewModel> products = this.productRepository.getAllByRangeWithoutBuyer(new BigDecimal(from), new BigDecimal(to));
+		return products;
 	}
 
 }

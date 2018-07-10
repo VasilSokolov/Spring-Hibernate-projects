@@ -1,13 +1,8 @@
 package app.products.shop;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Type;
-import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
@@ -16,7 +11,6 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-import org.springframework.util.StreamUtils;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -27,7 +21,10 @@ import app.products.shop.io.xmlparser.XmlParser;
 import app.products.shop.model.dto.binding.category.CategoryCreateBindingModel;
 import app.products.shop.model.dto.binding.product.ProductCreateBindingModel;
 import app.products.shop.model.dto.binding.user.UserCreateBindingModel;
+import app.products.shop.model.dto.binding.user.UserCreateWrapper;
 import app.products.shop.model.dto.views.product.ProductInRangeViewModel;
+import app.products.shop.model.dto.views.product.ProductInRangeWrapper;
+import app.products.shop.model.entity.User;
 import app.products.shop.services.category.CategoryService;
 import app.products.shop.services.product.ProductService;
 import app.products.shop.services.user.UserService;
@@ -37,7 +34,7 @@ import app.products.shop.services.user.UserService;
 public class Runner implements CommandLineRunner {
 
 
-	private static final String USER_XML_FILE_LOCATION = "/inputXml/products.xml";
+	private static final String USER_XML_FILE_LOCATION = "/inputXml/users.xml";
 	
 	private static final String USER_JSON_FILE_LOCATION = "/inputJson/users.json";
 	private static final String PRODUCTS_JSON_FILE_LOCATION = "/inputJson/products.json";
@@ -71,12 +68,31 @@ public class Runner implements CommandLineRunner {
 //		this.seedProducts();
 //		this.seedCategories();
 		
-		this.xmlViewModel();
+		this.getUserModel();
+	}
+	
+	private void getUserModel() {
+		User user = this.userService.user();
+		String ser = this.xmlParser.serialize(user);
+		System.out.println(ser);
 	}
 	
 	private void xmlViewModel() {
 		String userXml = this.reader.readLines(USER_XML_FILE_LOCATION);
-		UserCreateBindingModel[] users = this.xmlParser.deserialize(userXml, UserCreateBindingModel[].class);
+		UserCreateWrapper users = this.xmlParser.deserialize(userXml, UserCreateWrapper.class);
+		List<ProductInRangeViewModel> products =  this.productService.getAllByRangeWithoutBuyer(500, 1000);
+		
+		ProductInRangeWrapper wrapper = new ProductInRangeWrapper();
+		wrapper.setProducts(products);
+		String result = this.xmlParser.serialize(wrapper);
+		System.out.println(result.toString());
+		
+//		this.seedUsers(users.getUsers());
+		
+//		String serialize = this.xmlParser.serialize(users);
+//		System.out.println(serialize);
+//		System.out.println(users.toString());
+		String debug = "";
 	}
 	
 	private void jsonOutputProductViewModels() {
@@ -172,6 +188,11 @@ public class Runner implements CommandLineRunner {
 //		
 ////		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 ////		reader.lines().forEach(System.out::println);
+	}
+	
+	private void seedUsers(List<UserCreateBindingModel> models) {
+				
+		this.userService.saveAll(models);
 	}
 	
 	private <T> void showResultFromList(Iterable<T> list) {
