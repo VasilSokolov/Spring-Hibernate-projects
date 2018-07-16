@@ -9,6 +9,6 @@ public interface UserService {
 	
 	void save(UserCreateBindingModel users);
 	void saveAll(Collection<UserCreateBindingModel> models);
-	User user();
+	User getUser(int id);
 	
 }

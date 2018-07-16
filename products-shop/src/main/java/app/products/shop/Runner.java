@@ -64,16 +64,19 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		System.out.println("Running");
 //		this.seedUsers();
 //		this.seedProducts();
 //		this.seedCategories();
-		
-		this.getUserModel();
 	}
 	
+	
+	//test
 	private void getUserModel() {
-		User user = this.userService.user();
-		String ser = this.xmlParser.serialize(user);
+		User user = this.userService.getUser(2);
+		User u = new User(user.getFirstName(), user.getLastName(), user.getAge());
+		u.setId(user.getId());
+		String ser = this.xmlParser.serialize(u);
 		System.out.println(ser);
 	}
 	

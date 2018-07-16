@@ -8,6 +8,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,8 +45,18 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User user() {
-		return this.userRepository.getOne(2);
+	public User getUser(int id) {
+		
+		return this.userRepository.getUser(id);
+//		boolean isExist = this.userRepository.existsById(2);
+//		System.out.println(isExist);
+//		Optional<User> user = this.userRepository.findById(2);
+//		System.out.println(user.isPresent());
+//		if (user.isPresent()) {
+//			User findUser = user.get();
+//			return findUser;
+//		}
+//		return null;
 	}
 
 }
