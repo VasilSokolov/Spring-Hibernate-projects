@@ -7,5 +7,5 @@ import org.springframework.stereotype.Component;
 @Component
 public interface Serializer {
 
-	<S> S deserialize(Class<S> clazz, String fileName) throws ParseException;
+    <S> S deserialize(Class<S> clazz, String fileName) throws ParseException;
 }

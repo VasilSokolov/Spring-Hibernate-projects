@@ -15,17 +15,17 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource(value = {"classpath:app.properties", "classpath:local.properties"})
-public class BookShopSystemApplication implements ApplicationRunner{
+public class BookShopSystemApplication implements ApplicationRunner {
 
-	private static final Logger log = LogManager.getLogger(BookShopSystemApplication.class);
-	
-	public static void main(String[] args) {
-		SpringApplication.run(BookShopSystemApplication.class, args);
-		
-	}
+    private static final Logger log = LogManager.getLogger(BookShopSystemApplication.class);
 
-	@Override
-	public void run(ApplicationArguments args) throws Exception {
+    public static void main(String[] args) {
+        SpringApplication.run(BookShopSystemApplication.class, args);
+
+    }
+
+    @Override
+    public void run(ApplicationArguments args) throws Exception {
 //		log.debug("Debugging log");
 //		log.info("Info log");
 //		log.warn("Hey, This is a warning!");
@@ -33,5 +33,5 @@ public class BookShopSystemApplication implements ApplicationRunner{
 //		log.fatal("Damn! Fatal error. Please fix me.");
         Collection<String> lists = new ArrayList<String>(Arrays.asList("Mint", "Netel"));
         log.info(lists.toString());
-	}
+    }
 }

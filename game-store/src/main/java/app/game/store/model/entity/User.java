@@ -14,70 +14,69 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
 
-	private Long id;
-	private String email;
-	private String password;
-	private String fullName;
-	private Set<Game> games;
-	private Set<Role> roles;
-	
-	public User() {
-		this.games = new HashSet<>();
-		this.roles = new HashSet<>();
-	}
+    private Long id;
+    private String email;
+    private String password;
+    private String fullName;
+    private Set<Game> games;
+    private Set<Role> roles;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public User() {
+        this.games = new HashSet<>();
+        this.roles = new HashSet<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	public String getEmail() {
-		return email;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public String getFullName() {
-		return fullName;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+    public String getFullName() {
+        return fullName;
+    }
 
-	@ManyToMany
-	public Set<Game> getGames() {
-		return games;
-	}
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
-	public void setGames(Set<Game> games) {
-		this.games = games;
-	}
+    @ManyToMany
+    public Set<Game> getGames() {
+        return games;
+    }
 
-	@ManyToMany(mappedBy = "users")
-	public Set<Role> getRoles() {
-		return roles;
-	}
+    public void setGames(Set<Game> games) {
+        this.games = games;
+    }
 
-	public void setRoles(Set<Role> roles) {
-		this.roles = roles;
-	}
-	
-	
-	
+    @ManyToMany(mappedBy = "users")
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+
 }

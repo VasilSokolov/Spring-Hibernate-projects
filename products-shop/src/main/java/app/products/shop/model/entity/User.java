@@ -18,94 +18,94 @@ import javax.validation.constraints.Size;
 @Table(name = "users")
 public class User implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	private Integer id;
-	private String firstName;
-	private String lastName;
-	private Integer age;
-	private Set<User> friends;
-	private Set<Product> productsForBuying;
-	private Set<Product> productsForSelling;
-			
-	public User() {
-		this.friends = new HashSet<>();
-		this.productsForBuying = new HashSet<>();
-		this.productsForSelling = new HashSet<>();
-	}
+    private static final long serialVersionUID = 1L;
 
-	public User(String firstName, String lastName, Integer age) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.age = age;
-	}
+    private Integer id;
+    private String firstName;
+    private String lastName;
+    private Integer age;
+    private Set<User> friends;
+    private Set<Product> productsForBuying;
+    private Set<Product> productsForSelling;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Integer getId() {
-		return id;
-	}
+    public User() {
+        this.friends = new HashSet<>();
+        this.productsForBuying = new HashSet<>();
+        this.productsForSelling = new HashSet<>();
+    }
 
-	public void setId(Integer id) {
-		this.id = id;
-	}
+    public User(String firstName, String lastName, Integer age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Integer getId() {
+        return id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
-	@Column(nullable = false)
-	@Size(min = 3)
-	public String getLastName() {
-		return lastName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-//	@Column(nullable = false)
-	public Integer getAge() {
-		return age;
-	}
+    @Column(nullable = false)
+    @Size(min = 3)
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setAge(Integer age) {
-		this.age = age;
-	}		
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	@ManyToMany
-	public Set<User> getFriends() {
-		return friends;
-	}
+    //	@Column(nullable = false)
+    public Integer getAge() {
+        return age;
+    }
 
-	public void setFriends(Set<User> friends) {
-		this.friends = friends;
-	}
+    public void setAge(Integer age) {
+        this.age = age;
+    }
 
-	@OneToMany(mappedBy = "buyer")
-	public Set<Product> getProductsForBuying() {
-		return productsForBuying;
-	}
+    @ManyToMany
+    public Set<User> getFriends() {
+        return friends;
+    }
 
-	public void setProductsForBuying(Set<Product> productsForBuying) {
-		this.productsForBuying = productsForBuying;
-	}
+    public void setFriends(Set<User> friends) {
+        this.friends = friends;
+    }
 
-	@OneToMany(mappedBy = "seller")
-	public Set<Product> getProductsForSelling() {
-		return productsForSelling;
-	}
+    @OneToMany(mappedBy = "buyer")
+    public Set<Product> getProductsForBuying() {
+        return productsForBuying;
+    }
 
-	public void setProductsForSelling(Set<Product> productsForSelling) {
-		this.productsForSelling = productsForSelling;
-	}
+    public void setProductsForBuying(Set<Product> productsForBuying) {
+        this.productsForBuying = productsForBuying;
+    }
 
-	@Override
-	public String toString() {
-		return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
-	}
+    @OneToMany(mappedBy = "seller")
+    public Set<Product> getProductsForSelling() {
+        return productsForSelling;
+    }
+
+    public void setProductsForSelling(Set<Product> productsForSelling) {
+        this.productsForSelling = productsForSelling;
+    }
+
+    @Override
+    public String toString() {
+        return "User [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age + "]";
+    }
 }

@@ -4,7 +4,7 @@ package org.bookshop.system.app.enums;
 //import java.util.Map;
 
 public enum EditionType {
-//	NORMAL("1"),
+    //	NORMAL("1"),
 //	PROMO("2"), 
 //	GOLD("3");
 //	
@@ -17,9 +17,9 @@ public enum EditionType {
 //	public String getId() {
 //		return id;
 //	}
-	NORMAL,
-	PROMO, 
-	GOLD;
+    NORMAL,
+    PROMO,
+    GOLD;
 //	
 //	private String type;
 //

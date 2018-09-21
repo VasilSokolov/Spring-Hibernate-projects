@@ -27,83 +27,83 @@ import db_advanced.ingredients.model.BasicIngredient;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name = "basic_shampoo", discriminatorType = DiscriminatorType.STRING)
 public abstract class BasicShampoo implements Shampoos {
-	
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Basic
-	private String name;	
-	
-	@Basic
-	private BigDecimal price;
 
-	@OneToOne(optional = false)
-	@JoinColumn(name="label_id", referencedColumnName = "id")
-	private ClassicLabel label;
-	
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "batch_id", referencedColumnName = "id")
-	private ProductionBatch productionBatch;
-	
-	@ManyToMany
-	@JoinTable(name = "shampoo_ingrediants", 
-		joinColumns = @JoinColumn(name = "shampoo_id", referencedColumnName = "id"),
-		inverseJoinColumns = @JoinColumn(name = "ingrediant_id", referencedColumnName = "id"))
-	private Set<BasicIngredient> basicIngredients;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	public BasicShampoo(String name, BigDecimal price) {		
-		this.name = name;
-		this.price = price;
-	}
+    @Basic
+    private String name;
 
-	public BasicShampoo() {
-	}
+    @Basic
+    private BigDecimal price;
 
-	public String getName() {
-		return name;
-	}
+    @OneToOne(optional = false)
+    @JoinColumn(name = "label_id", referencedColumnName = "id")
+    private ClassicLabel label;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "batch_id", referencedColumnName = "id")
+    private ProductionBatch productionBatch;
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    @ManyToMany
+    @JoinTable(name = "shampoo_ingrediants",
+            joinColumns = @JoinColumn(name = "shampoo_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "ingrediant_id", referencedColumnName = "id"))
+    private Set<BasicIngredient> basicIngredients;
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public BasicShampoo(String name, BigDecimal price) {
+        this.name = name;
+        this.price = price;
+    }
 
-	public ClassicLabel getLabel() {
-		return label;
-	}
+    public BasicShampoo() {
+    }
 
-	public void setLabel(ClassicLabel label) {
-		this.label = label;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public ProductionBatch getProductionBatch() {
-		return productionBatch;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setProductionBatch(ProductionBatch productionBatch) {
-		this.productionBatch = productionBatch;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public Set<BasicIngredient> getBasicIngredients() {
-		return basicIngredients;
-	}
+    public ClassicLabel getLabel() {
+        return label;
+    }
 
-	public void setBasicIngredients(Set<BasicIngredient> basicIngredients) {
-		this.basicIngredients = basicIngredients;
-	}
-	
-	
+    public void setLabel(ClassicLabel label) {
+        this.label = label;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public ProductionBatch getProductionBatch() {
+        return productionBatch;
+    }
+
+    public void setProductionBatch(ProductionBatch productionBatch) {
+        this.productionBatch = productionBatch;
+    }
+
+    public Set<BasicIngredient> getBasicIngredients() {
+        return basicIngredients;
+    }
+
+    public void setBasicIngredients(Set<BasicIngredient> basicIngredients) {
+        this.basicIngredients = basicIngredients;
+    }
+
+
 }

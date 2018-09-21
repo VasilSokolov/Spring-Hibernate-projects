@@ -17,44 +17,44 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "production_batch")
 public class ProductionBatch {
-	
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
-	@Basic
-	private String name;
-	
-	@OneToMany(mappedBy = "productionBatch", targetEntity = BasicShampoo.class,
-			fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private Set<BasicShampoo> basicShampoos = new HashSet<BasicShampoo>();
-	
-	public ProductionBatch() {
-	}
 
-	public ProductionBatch(String name) {
-		this.name = name;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-	public String getName() {
-		return name;
-	}
+    @Basic
+    private String name;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @OneToMany(mappedBy = "productionBatch", targetEntity = BasicShampoo.class,
+            fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Set<BasicShampoo> basicShampoos = new HashSet<BasicShampoo>();
 
-	public int getId() {
-		return id;
-	}
+    public ProductionBatch() {
+    }
 
-	public Set<BasicShampoo> getBasicShampoos() {
-		return basicShampoos;
-	}
+    public ProductionBatch(String name) {
+        this.name = name;
+    }
 
-	public void setBasicShampoos(Set<BasicShampoo> basicShampoos) {
-		this.basicShampoos = basicShampoos;
-	}	
-	
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public Set<BasicShampoo> getBasicShampoos() {
+        return basicShampoos;
+    }
+
+    public void setBasicShampoos(Set<BasicShampoo> basicShampoos) {
+        this.basicShampoos = basicShampoos;
+    }
+
 }

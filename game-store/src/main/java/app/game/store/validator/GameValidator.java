@@ -19,7 +19,9 @@ import org.springframework.stereotype.Component;
 @Component
 public @interface GameValidator {
 
-	String message() default "default game ";
-	Class<?>[] groups() default { };
-	Class<? extends Payload>[] payload() default { };
-	}
+    String message() default "default game ";
+
+    Class<?>[] groups() default {};
+
+    Class<? extends Payload>[] payload() default {};
+}

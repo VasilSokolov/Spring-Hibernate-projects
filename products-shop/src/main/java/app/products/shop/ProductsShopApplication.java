@@ -11,8 +11,8 @@ import org.springframework.context.annotation.PropertySource;
 @PropertySource(value = {"classpath:app.properties", "classpath:local.properties"})
 public class ProductsShopApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 //		ANSRBuilder.run(Strategy.REPOSITORIES_AND_SERVICES(), ProductsShopApplication.class, args);
-		SpringApplication.run(ProductsShopApplication.class, args);
-	}
+        SpringApplication.run(ProductsShopApplication.class, args);
+    }
 }

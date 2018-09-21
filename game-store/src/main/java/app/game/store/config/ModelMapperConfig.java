@@ -4,13 +4,13 @@ import org.modelmapper.ModelMapper;
 
 public class ModelMapperConfig {
 
-	private final ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
 
-	public ModelMapperConfig(ModelMapper modelMapper) {
-		this.modelMapper = modelMapper;
-	}
-	
-	private void initialize() {
-		
-	}
+    public ModelMapperConfig(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
+
+    private void initialize() {
+
+    }
 }

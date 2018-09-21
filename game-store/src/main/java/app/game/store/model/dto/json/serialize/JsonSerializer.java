@@ -19,26 +19,26 @@ import app.game.store.io.FileIO;
 @Component(value = "JsonSerializer")
 public class JsonSerializer implements Serializer {
 
-	private Gson gson;
+    private Gson gson;
 
-	private FileIO file = new FileIO();
+    private FileIO file = new FileIO();
 
-	public JsonSerializer(Gson gson) {
-		this.gson = new GsonBuilder()
-				.excludeFieldsWithoutExposeAnnotation()
-				.setPrettyPrinting()
-				// .registerTypeAdapter(Date.class, new DateDeserializer())
-				// .setDateFormat("yyyy-MM-dd")
-				.create();
+    public JsonSerializer(Gson gson) {
+        this.gson = new GsonBuilder()
+                .excludeFieldsWithoutExposeAnnotation()
+                .setPrettyPrinting()
+                // .registerTypeAdapter(Date.class, new DateDeserializer())
+                // .setDateFormat("yyyy-MM-dd")
+                .create();
 
 //		gson = new GsonBuilder().setDateFormat("yyyy-MM-dd").create();
-	}
+    }
 
-	@Override
-	public <S> S deserialize(Class<S> clazz, String fileName) throws ParseException {
+    @Override
+    public <S> S deserialize(Class<S> clazz, String fileName) throws ParseException {
 //		String birthday = "22-03-2016";
 //		Date birthdayDate = new SimpleDateFormat("dd-MM-yyyy", Locale.UK).parse(birthday);
-		String json = file.readJson(fileName);
+        String json = file.readJson(fileName);
 //				"{\r\n" + 
 //				"	\"id\": 1,\r\n" + 
 //				"	\"title\": \"Tittle\",\r\n" + 
@@ -61,17 +61,18 @@ public class JsonSerializer implements Serializer {
 //				"		}\r\n" + 
 //				"	]\r\n" + 
 //				"}";
-		if (!json.isEmpty()) {
-			return gson.fromJson(json, clazz);
-		}
-		return null;
-	}
-	
-	public <T> List<T> importJsonList(Class<T> clazz, String fileName) {
-		Type type = new TypeToken<ArrayList<T>>() {}.getType();
-		String json = this.file.readJson(fileName);
-		
-		return this.gson.fromJson(json, type);
-	}
+        if (!json.isEmpty()) {
+            return gson.fromJson(json, clazz);
+        }
+        return null;
+    }
+
+    public <T> List<T> importJsonList(Class<T> clazz, String fileName) {
+        Type type = new TypeToken<ArrayList<T>>() {
+        }.getType();
+        String json = this.file.readJson(fileName);
+
+        return this.gson.fromJson(json, type);
+    }
 
 }

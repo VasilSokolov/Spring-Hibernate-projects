@@ -4,44 +4,44 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 
 public class EmployeeDto implements Serializable {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private BigDecimal salary;
-	private String addressCityName;
-	
-	public EmployeeDto() {
-	}
 
-	public String getName() {
-		return name;
-	}
+    private static final long serialVersionUID = 1L;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    private String name;
+    private BigDecimal salary;
+    private String addressCityName;
 
-	public BigDecimal getSalary() {
-		return salary;
-	}
+    public EmployeeDto() {
+    }
 
-	public void setSalary(BigDecimal salary) {
-		this.salary = salary;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getAddressCityName() {
-		return addressCityName;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAddressCityName(String addressCityName) {
-		this.addressCityName = addressCityName;
-	}
+    public BigDecimal getSalary() {
+        return salary;
+    }
 
-	@Override
-	public String toString() {
-		return "EmployeeDto [name=" + name + ", salary=" + salary + ", addressCityName=" + addressCityName + "]";
-	}
-	
-	
+    public void setSalary(BigDecimal salary) {
+        this.salary = salary;
+    }
+
+    public String getAddressCityName() {
+        return addressCityName;
+    }
+
+    public void setAddressCityName(String addressCityName) {
+        this.addressCityName = addressCityName;
+    }
+
+    @Override
+    public String toString() {
+        return "EmployeeDto [name=" + name + ", salary=" + salary + ", addressCityName=" + addressCityName + "]";
+    }
+
+
 }

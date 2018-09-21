@@ -18,115 +18,115 @@ import javax.persistence.Table;
 @Table(name = "books")
 public class Book {
 
-	private Long bookId;
-	private String title;
-	private String description;
-	private String editionType;
-	private BigDecimal price;
-	private Integer copies;
-	private Date releasDate;
-	private String ageRestriction;
-	private Author author;
-	private Set<Category> categories;
-	
-	public Book() {
-		this.categories = new HashSet<>();
-	}
+    private Long bookId;
+    private String title;
+    private String description;
+    private String editionType;
+    private BigDecimal price;
+    private Integer copies;
+    private Date releasDate;
+    private String ageRestriction;
+    private Author author;
+    private Set<Category> categories;
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getBookId() {
-		return bookId;
-	}
+    public Book() {
+        this.categories = new HashSet<>();
+    }
 
-	public void setBookId(Long bookId) {
-		this.bookId = bookId;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getBookId() {
+        return bookId;
+    }
 
-	@Column(length = 50, nullable = false)
-	public String getTitle() {
-		return title;
-	}
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @Column(length = 50, nullable = false)
+    public String getTitle() {
+        return title;
+    }
 
-	@Column(length = 1000)
-	public String getDescription() {
-		return description;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @Column(length = 1000)
+    public String getDescription() {
+        return description;
+    }
 
-	@Column(nullable = false)
-	public String getEditionType() {
-		return editionType;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setEditionType(String editionType) {
-		this.editionType = editionType;
-	}
+    @Column(nullable = false)
+    public String getEditionType() {
+        return editionType;
+    }
 
-	@Column(scale = 2, precision = 19, nullable = false)
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public void setEditionType(String editionType) {
+        this.editionType = editionType;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    @Column(scale = 2, precision = 19, nullable = false)
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	@Column(nullable = false)
-	public Integer getCopies() {
-		return copies;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public void setCopies(Integer copies) {
-		this.copies = copies;
-	}
+    @Column(nullable = false)
+    public Integer getCopies() {
+        return copies;
+    }
 
-	public Date getReleasDate() {
-		return releasDate;
-	}
+    public void setCopies(Integer copies) {
+        this.copies = copies;
+    }
 
-	public void setReleasDate(Date releasDate) {
-		this.releasDate = releasDate;
-	}
+    public Date getReleasDate() {
+        return releasDate;
+    }
 
-	@Column(nullable = false)
-	public String getAgeRestriction() {
-		return ageRestriction;
-	}
+    public void setReleasDate(Date releasDate) {
+        this.releasDate = releasDate;
+    }
 
-	public void setAgeRestriction(String ageRestriction) {
-		this.ageRestriction = ageRestriction;
-	}
+    @Column(nullable = false)
+    public String getAgeRestriction() {
+        return ageRestriction;
+    }
 
-	@ManyToOne(optional = false)
+    public void setAgeRestriction(String ageRestriction) {
+        this.ageRestriction = ageRestriction;
+    }
+
+    @ManyToOne(optional = false)
 //	@JoinColumn(nullable = false)
-	public Author getAuthor() {
-		return author;
-	}
+    public Author getAuthor() {
+        return author;
+    }
 
-	public void setAuthor(Author author) {
-		this.author = author;
-	}
+    public void setAuthor(Author author) {
+        this.author = author;
+    }
 
-//	@JoinTable(name = "books_categories",
+    //	@JoinTable(name = "books_categories",
 //			joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
 //			inverseJoinColumns = @JoinColumn(name ="category_id", referencedColumnName = "id"))
-	@ManyToMany
-	public Set<Category> getCategories() {
-		return categories;
-	}
+    @ManyToMany
+    public Set<Category> getCategories() {
+        return categories;
+    }
 
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}
-	
-	
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
+
 }

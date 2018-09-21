@@ -34,85 +34,85 @@ import app.products.shop.services.user.UserService;
 public class Runner implements CommandLineRunner {
 
 
-	private static final String USER_XML_FILE_LOCATION = "/inputXml/users.xml";
-	
-	private static final String USER_JSON_FILE_LOCATION = "/inputJson/users.json";
-	private static final String PRODUCTS_JSON_FILE_LOCATION = "/inputJson/products.json";
-	private static final String CREATE_PRODUCTS_JSON_FILE_LOCATION = "/outputJson/products-in-range.json";
-	private static final String CATEGORIES_JSON_FILE_LOCATION = "/inputJson/categories.json";
+    private static final String USER_XML_FILE_LOCATION = "/inputXml/users.xml";
 
-	private final UserService userService;
-	private final ProductService productService;
-	private final CategoryService categoryService;
-	private final Reader reader;
-	private final Writer writer;
-	private final XmlParser xmlParser;
+    private static final String USER_JSON_FILE_LOCATION = "/inputJson/users.json";
+    private static final String PRODUCTS_JSON_FILE_LOCATION = "/inputJson/products.json";
+    private static final String CREATE_PRODUCTS_JSON_FILE_LOCATION = "/outputJson/products-in-range.json";
+    private static final String CATEGORIES_JSON_FILE_LOCATION = "/inputJson/categories.json";
 
-	private final Gson gson;
+    private final UserService userService;
+    private final ProductService productService;
+    private final CategoryService categoryService;
+    private final Reader reader;
+    private final Writer writer;
+    private final XmlParser xmlParser;
 
-	@Autowired
-	public Runner(UserService userService, ProductService productService, 
-			CategoryService categoryService, Gson gson, Reader reader, Writer writer, XmlParser xmlParser) {
-		this.userService = userService;
-		this.productService = productService;
-		this.categoryService = categoryService;
-		this.gson = gson;
-		this.reader = reader;
-		this.writer = writer;
-		this.xmlParser = xmlParser;
-	}
+    private final Gson gson;
 
-	@Override
-	public void run(String... args) throws Exception {
-		System.out.println("Running");
+    @Autowired
+    public Runner(UserService userService, ProductService productService,
+                  CategoryService categoryService, Gson gson, Reader reader, Writer writer, XmlParser xmlParser) {
+        this.userService = userService;
+        this.productService = productService;
+        this.categoryService = categoryService;
+        this.gson = gson;
+        this.reader = reader;
+        this.writer = writer;
+        this.xmlParser = xmlParser;
+    }
+
+    @Override
+    public void run(String... args) throws Exception {
+        System.out.println("Running");
 //		this.seedUsers();
 //		this.seedProducts();
 //		this.seedCategories();
-	}
-	
-	
-	//test
-	private void getUserModel() {
-		User user = this.userService.getUser(2);
-		User u = new User(user.getFirstName(), user.getLastName(), user.getAge());
-		u.setId(user.getId());
-		String ser = this.xmlParser.serialize(u);
-		System.out.println(ser);
-	}
-	
-	private void xmlViewModel() {
-		String userXml = this.reader.readLines(USER_XML_FILE_LOCATION);
-		UserCreateWrapper users = this.xmlParser.deserialize(userXml, UserCreateWrapper.class);
-		List<ProductInRangeViewModel> products =  this.productService.getAllByRangeWithoutBuyer(500, 1000);
-		
-		ProductInRangeWrapper wrapper = new ProductInRangeWrapper();
-		wrapper.setProducts(products);
-		String result = this.xmlParser.serialize(wrapper);
-		System.out.println(result.toString());
-		
+    }
+
+
+    //test
+    private void getUserModel() {
+        User user = this.userService.getUser(2);
+        User u = new User(user.getFirstName(), user.getLastName(), user.getAge());
+        u.setId(user.getId());
+        String ser = this.xmlParser.serialize(u);
+        System.out.println(ser);
+    }
+
+    private void xmlViewModel() {
+        String userXml = this.reader.readLines(USER_XML_FILE_LOCATION);
+        UserCreateWrapper users = this.xmlParser.deserialize(userXml, UserCreateWrapper.class);
+        List<ProductInRangeViewModel> products = this.productService.getAllByRangeWithoutBuyer(500, 1000);
+
+        ProductInRangeWrapper wrapper = new ProductInRangeWrapper();
+        wrapper.setProducts(products);
+        String result = this.xmlParser.serialize(wrapper);
+        System.out.println(result.toString());
+
 //		this.seedUsers(users.getUsers());
-		
+
 //		String serialize = this.xmlParser.serialize(users);
 //		System.out.println(serialize);
 //		System.out.println(users.toString());
-		String debug = "";
-	}
-	
-	private void jsonOutputProductViewModels() {
-		
+        String debug = "";
+    }
+
+    private void jsonOutputProductViewModels() {
+
 //		List<ProductInRangeViewModel> viewModel = this.productService.getAllByRangeWithoutBuyer(500, 1000);
 //		String jsonOutput = this.gson.toJson(viewModel);
 //		this.writer.writeToFile(jsonOutput, CREATE_PRODUCTS_JSON_FILE_LOCATION);
-		
+
 //		System.out.println(jsonOutput);
-		
+
 //		this.writeToFile(CREATE_PRODUCTS_JSON_FILE_LOCATION, jsonOutput);
-		
-		
+
+
 //		o.forEach(System.out::println);
 //		System.out.println(viewModel.toString());
-	}
-	
+    }
+
 //	private void writeToFile(String fileName, String src) {
 //		try {
 //			String mainPath = System.getProperty("user.dir") + "/src/main/resources";
@@ -124,64 +124,67 @@ public class Runner implements CommandLineRunner {
 //			e.printStackTrace();
 //		}
 //	}
-	
-	private void seedCategories() {
+
+    private void seedCategories() {
 //		InputStream inputStream = this.loadData(CATEGORIES_JSON_FILE_LOCATION);
 //		String loader = readAllData(inputStream);
-		String loader = this.reader.readLines(CATEGORIES_JSON_FILE_LOCATION);
-		Type listType = new TypeToken<ArrayList<CategoryCreateBindingModel>>() {}.getType();
-		List<CategoryCreateBindingModel> categories = this.gson.fromJson(loader, listType);
-		
+        String loader = this.reader.readLines(CATEGORIES_JSON_FILE_LOCATION);
+        Type listType = new TypeToken<ArrayList<CategoryCreateBindingModel>>() {
+        }.getType();
+        List<CategoryCreateBindingModel> categories = this.gson.fromJson(loader, listType);
 
-		categories.forEach(this::randomizeCategoriesData);
-		
-		this.categoryService.saveAll(categories);
-	}
-	
-	private void seedProducts() {
+
+        categories.forEach(this::randomizeCategoriesData);
+
+        this.categoryService.saveAll(categories);
+    }
+
+    private void seedProducts() {
 //		InputStream inputStream = this.loadData(PRODUCTS_JSON_FILE_LOCATION);
 //		String loader = readAllData(inputStream);
-		String loader = this.reader.readLines(PRODUCTS_JSON_FILE_LOCATION);
-		Type listType = new TypeToken<ArrayList<ProductCreateBindingModel>>() {}.getType();
-		List<ProductCreateBindingModel> products = this.gson.fromJson(loader, listType);
-		
-		
-		products.forEach(this::randomizeProductData);
+        String loader = this.reader.readLines(PRODUCTS_JSON_FILE_LOCATION);
+        Type listType = new TypeToken<ArrayList<ProductCreateBindingModel>>() {
+        }.getType();
+        List<ProductCreateBindingModel> products = this.gson.fromJson(loader, listType);
 
-		this.productService.saveAll(products);
+
+        products.forEach(this::randomizeProductData);
+
+        this.productService.saveAll(products);
 //		products.stream().peek(p -> this.randomizeData(p));
 //		this.showResultFromList(products);
-	}
-	
-	private void randomizeCategoriesData (CategoryCreateBindingModel model) {
-		Random random = new Random();
-		int id = random.nextInt(10);
-		if (id <= 10) {
-			model.setId(id);			
-		}
-	}
-	
-	private void randomizeProductData (ProductCreateBindingModel model) {
-		Random random = new Random();
-		int buyer = random.nextInt(60);
-		if (buyer <= 57) {
-			model.setBuyer(buyer);			
-		}
-		int seller = 0;
-		do {
+    }
 
-			seller = random.nextInt(57);
-			model.setSeller(seller);
-		} while (seller == buyer);
-	}
-	
-	private void seedUsers() {
+    private void randomizeCategoriesData(CategoryCreateBindingModel model) {
+        Random random = new Random();
+        int id = random.nextInt(10);
+        if (id <= 10) {
+            model.setId(id);
+        }
+    }
+
+    private void randomizeProductData(ProductCreateBindingModel model) {
+        Random random = new Random();
+        int buyer = random.nextInt(60);
+        if (buyer <= 57) {
+            model.setBuyer(buyer);
+        }
+        int seller = 0;
+        do {
+
+            seller = random.nextInt(57);
+            model.setSeller(seller);
+        } while (seller == buyer);
+    }
+
+    private void seedUsers() {
 //		InputStream inputStream = this.loadData(USER_JSON_FILE_LOCATION);
 //		String loader = readAllData(inputStream);
-		String loader = this.reader.readLines(USER_JSON_FILE_LOCATION);
-		Type listType = new TypeToken<ArrayList<UserCreateBindingModel>>() {}.getType();
-		List<UserCreateBindingModel> usersList = this.gson.fromJson(loader, listType);		
-		this.userService.saveAll(usersList);
+        String loader = this.reader.readLines(USER_JSON_FILE_LOCATION);
+        Type listType = new TypeToken<ArrayList<UserCreateBindingModel>>() {
+        }.getType();
+        List<UserCreateBindingModel> usersList = this.gson.fromJson(loader, listType);
+        this.userService.saveAll(usersList);
 ////		for (UserCreateBindingModel user : usersList) {
 ////			System.out.println(user.toString());
 ////		}
@@ -191,24 +194,24 @@ public class Runner implements CommandLineRunner {
 //		
 ////		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 ////		reader.lines().forEach(System.out::println);
-	}
-	
-	private void seedUsers(List<UserCreateBindingModel> models) {
-				
-		this.userService.saveAll(models);
-	}
-	
-	private <T> void showResultFromList(Iterable<T> list) {
-		for (T s : list) {
-			System.out.println(s.toString());
-		}
-	}
-	
-	private InputStream loadData(String fileLocation) {
-		InputStream stream = Runner.class.getResourceAsStream(fileLocation);
-		return stream;
-	}
-	
+    }
+
+    private void seedUsers(List<UserCreateBindingModel> models) {
+
+        this.userService.saveAll(models);
+    }
+
+    private <T> void showResultFromList(Iterable<T> list) {
+        for (T s : list) {
+            System.out.println(s.toString());
+        }
+    }
+
+    private InputStream loadData(String fileLocation) {
+        InputStream stream = Runner.class.getResourceAsStream(fileLocation);
+        return stream;
+    }
+
 //	private String readAllData(InputStream stream) {
 //		try {
 //			return StreamUtils.copyToString(stream, Charset.defaultCharset());

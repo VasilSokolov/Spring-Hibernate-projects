@@ -17,77 +17,77 @@ import javax.persistence.Table;
 @Table(name = "products")
 public class Product {
 
-	private Long id;
-	private String name;
-	private BigDecimal price;
-	private User buyer;
-	private User seller;
-	private Set<Category> categories;
-		
-	
-	public Product() {
-		this.categories = new HashSet<>();
-	}
+    private Long id;
+    private String name;
+    private BigDecimal price;
+    private User buyer;
+    private User seller;
+    private Set<Category> categories;
 
-	public Product(String name, BigDecimal price, User buyer, User seller) {
-		this.name = name;
-		this.price = price;
-		this.buyer = buyer;
-		this.seller = seller;
-	}
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public Product() {
+        this.categories = new HashSet<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Product(String name, BigDecimal price, User buyer, User seller) {
+        this.name = name;
+        this.price = price;
+        this.buyer = buyer;
+        this.seller = seller;
+    }
 
-	public String getName() {
-		return name;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	@Column(scale = 2, precision = 10, nullable = false)
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@ManyToOne
-	public User getBuyer() {
-		return buyer;
-	}
+    @Column(scale = 2, precision = 10, nullable = false)
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setBuyer(User buyer) {
-		this.buyer = buyer;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	@ManyToOne
-	public User getSeller() {
-		return seller;
-	}
+    @ManyToOne
+    public User getBuyer() {
+        return buyer;
+    }
 
-	public void setSeller(User seller) {
-		this.seller = seller;
-	}
+    public void setBuyer(User buyer) {
+        this.buyer = buyer;
+    }
 
-	@ManyToMany(mappedBy = "products")
-	public Set<Category> getCategories() {
-		return categories;
-	}
+    @ManyToOne
+    public User getSeller() {
+        return seller;
+    }
 
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}
-	
+    public void setSeller(User seller) {
+        this.seller = seller;
+    }
+
+    @ManyToMany(mappedBy = "products")
+    public Set<Category> getCategories() {
+        return categories;
+    }
+
+    public void setCategories(Set<Category> categories) {
+        this.categories = categories;
+    }
+
 }

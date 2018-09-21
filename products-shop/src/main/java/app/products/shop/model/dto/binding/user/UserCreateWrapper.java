@@ -11,25 +11,25 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class UserCreateWrapper {
 
-	private int count = 1;
+    private int count = 1;
 
-	@XmlElement(name = "user")
-	private List<UserCreateBindingModel> users;
+    @XmlElement(name = "user")
+    private List<UserCreateBindingModel> users;
 
-	public List<UserCreateBindingModel> getUsers() {
-		return users;
-	}
+    public List<UserCreateBindingModel> getUsers() {
+        return users;
+    }
 
-	@Override
-	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		users.forEach( s -> {
-			sb.append(count++ + " ")
-			.append(s)
-			.append("\n");
-		});
-		return sb.toString();
-	}
-	
-	
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        users.forEach(s -> {
+            sb.append(count++ + " ")
+                    .append(s)
+                    .append("\n");
+        });
+        return sb.toString();
+    }
+
+
 }

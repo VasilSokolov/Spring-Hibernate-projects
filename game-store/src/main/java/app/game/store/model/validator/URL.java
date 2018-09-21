@@ -12,7 +12,9 @@ import javax.validation.Payload;
 @Retention(RetentionPolicy.RUNTIME)
 @Constraint(validatedBy = ImageUrlValidator.class)
 public @interface URL {
-	String message() default "Empty";
+    String message() default "Empty";
+
     Class<?>[] groups() default {};
+
     Class<? extends Payload>[] payload() default {};
 }

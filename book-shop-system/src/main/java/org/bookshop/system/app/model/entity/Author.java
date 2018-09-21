@@ -15,56 +15,56 @@ import javax.persistence.Table;
 @Table(name = "authors")
 public class Author {
 
-	private Long authorId;
-	private String firstName;
-	private String lastName;
-	private Set<Book> books;
-	
-	public Author() {
-		this.books = new HashSet<>();
-	}
+    private Long authorId;
+    private String firstName;
+    private String lastName;
+    private Set<Book> books;
 
-	public Author(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+    public Author() {
+        this.books = new HashSet<>();
+    }
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getAuthorId() {
-		return authorId;
-	}
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
-	public void setAuthorId(Long authorId) {
-		this.authorId = authorId;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getAuthorId() {
+        return authorId;
+    }
 
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setAuthorId(Long authorId) {
+        this.authorId = authorId;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	@Column(nullable = false)
-	public String getLastName() {
-		return lastName;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    @Column(nullable = false)
+    public String getLastName() {
+        return lastName;
+    }
 
-	@OneToMany(mappedBy = "author")
-	public Set<Book> getBooks() {
-		return books;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public void setBooks(Set<Book> books) {
-		this.books = books;
-	}
-	
-	
+    @OneToMany(mappedBy = "author")
+    public Set<Book> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+
 }

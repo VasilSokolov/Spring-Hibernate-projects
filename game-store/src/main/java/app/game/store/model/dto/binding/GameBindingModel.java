@@ -8,13 +8,13 @@ import app.game.store.model.entity.User;
 
 public class GameBindingModel {
 
-	private Long id;
-	private String title;
-	private String youtubeId;
-	private String imageUrl;
-	private Double size;
-	private BigDecimal price;
-	private String description;
-	private Date releaseDate;
-	private Set<User> users;
+    private Long id;
+    private String title;
+    private String youtubeId;
+    private String imageUrl;
+    private Double size;
+    private BigDecimal price;
+    private String description;
+    private Date releaseDate;
+    private Set<User> users;
 }

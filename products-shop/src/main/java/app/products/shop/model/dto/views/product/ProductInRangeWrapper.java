@@ -12,14 +12,14 @@ import javax.xml.bind.annotation.XmlRootElement;
 //@XmlAccessorType(XmlAccessType.FIELD)
 public class ProductInRangeWrapper implements Serializable {
 
-	@XmlElement(name = "product")
-	private List<ProductInRangeViewModel> products;
+    @XmlElement(name = "product")
+    private List<ProductInRangeViewModel> products;
 
-	public List<ProductInRangeViewModel> getProducts() {
-		return products;
-	}
+    public List<ProductInRangeViewModel> getProducts() {
+        return products;
+    }
 
-	public void setProducts(List<ProductInRangeViewModel> products) {
-		this.products = products;
-	}
+    public void setProducts(List<ProductInRangeViewModel> products) {
+        this.products = products;
+    }
 }

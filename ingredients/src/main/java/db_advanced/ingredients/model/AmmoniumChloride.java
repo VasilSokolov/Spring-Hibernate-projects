@@ -7,9 +7,9 @@ import javax.persistence.Entity;
 
 @Entity
 @DiscriminatorValue(value = "AmmonChl")
-public class AmmoniumChloride extends ChemicalIngredient{
+public class AmmoniumChloride extends ChemicalIngredient {
 
-	public AmmoniumChloride() {
-		super("Ammonium Chlorid", BigDecimal.valueOf(5.12), "NH4Cl");
-	}	
+    public AmmoniumChloride() {
+        super("Ammonium Chlorid", BigDecimal.valueOf(5.12), "NH4Cl");
+    }
 }

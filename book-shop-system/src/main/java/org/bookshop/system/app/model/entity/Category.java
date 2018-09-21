@@ -15,46 +15,46 @@ import javax.persistence.Table;
 @Table(name = "categories")
 public class Category {
 
-	private Long categoryId;
-	private String name;
-	private Set<Book> books;
-	
-	public Category() {
-		this.books = new HashSet<>();
-	}
-	
-	public Category(String name) {
-		this.name = name;
-	}
+    private Long categoryId;
+    private String name;
+    private Set<Book> books;
+
+    public Category() {
+        this.books = new HashSet<>();
+    }
+
+    public Category(String name) {
+        this.name = name;
+    }
 
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getCategoryId() {
-		return categoryId;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getCategoryId() {
+        return categoryId;
+    }
 
-	public void setCategoryId(Long categoryId) {
-		this.categoryId = categoryId;
-	}
+    public void setCategoryId(Long categoryId) {
+        this.categoryId = categoryId;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@ManyToMany(mappedBy = "categories", targetEntity = Book.class)
-	public Set<Book> getBooks() {
-		return books;
-	}
+    @ManyToMany(mappedBy = "categories", targetEntity = Book.class)
+    public Set<Book> getBooks() {
+        return books;
+    }
 
-	public void setBooks(Set<Book> books) {
-		this.books = books;
-	}
-	
-	
+    public void setBooks(Set<Book> books) {
+        this.books = books;
+    }
+
+
 }

@@ -11,22 +11,22 @@ import org.springframework.util.StreamUtils;
 @Component
 public class ReaderImpl implements Reader {
 
-	@Override
-	public List<String> readAllLines(String fileName) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public List<String> readAllLines(String fileName) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
-	@Override
-	public String readLines(String fileName) {
-		InputStream inputStream = Reader.class.getResourceAsStream(fileName);
-		try {
-			return StreamUtils.copyToString(inputStream, Charset.defaultCharset());
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return null;
+    @Override
+    public String readLines(String fileName) {
+        InputStream inputStream = Reader.class.getResourceAsStream(fileName);
+        try {
+            return StreamUtils.copyToString(inputStream, Charset.defaultCharset());
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return null;
 //		InputStream inputStream = Reader.class.getResourceAsStream(fileName);
 //		StringBuilder sb = new StringBuilder();		
 //		String line = "";
@@ -38,6 +38,6 @@ public class ReaderImpl implements Reader {
 //			e.printStackTrace();
 //		}
 //		return sb.toString();
-	}
+    }
 
 }

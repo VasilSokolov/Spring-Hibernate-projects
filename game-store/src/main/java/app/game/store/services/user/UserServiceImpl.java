@@ -11,17 +11,17 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-	private final UserRepository userRepository;
+    private final UserRepository userRepository;
 
-	@Autowired
-	public UserServiceImpl(UserRepository userRepository) { 
-		this.userRepository = userRepository;
-	}
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
-	@Override
-	public String register(UserRegisterBindingModel model) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+    @Override
+    public String register(UserRegisterBindingModel model) {
+        // TODO Auto-generated method stub
+        return null;
+    }
 
 }

@@ -6,5 +6,5 @@ import app.products.shop.model.dto.binding.category.CategoryCreateBindingModel;
 
 public interface CategoryService {
 
-	void saveAll(Collection<CategoryCreateBindingModel> model);
+    void saveAll(Collection<CategoryCreateBindingModel> model);
 }

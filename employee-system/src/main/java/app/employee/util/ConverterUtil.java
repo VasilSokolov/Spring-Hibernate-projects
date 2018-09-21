@@ -6,21 +6,21 @@ import org.modelmapper.TypeMap;
 
 public class ConverterUtil {
 
-	private static ModelMapper mapper = new ModelMapper();
-	
-	private ConverterUtil() {
-	}
+    private static ModelMapper mapper = new ModelMapper();
 
-	public static <S, D> D convert(S source, Class<D> destinationClass) {
-		return mapper.map(source, destinationClass);
-	}
-	
-	public static <S, D> D convertCustom(S sourceType, Class<D> destClass, ExpressionMap<S, D>... exprMap) {
-		TypeMap<S, D> typeMap = mapper.createTypeMap(sourceType, destClass);
-		for (ExpressionMap<S, D> expressionMap : exprMap) {
-			typeMap.addMappings(expressionMap);
-		}
-		return typeMap.map(sourceType);
-	}
-	
+    private ConverterUtil() {
+    }
+
+    public static <S, D> D convert(S source, Class<D> destinationClass) {
+        return mapper.map(source, destinationClass);
+    }
+
+    public static <S, D> D convertCustom(S sourceType, Class<D> destClass, ExpressionMap<S, D>... exprMap) {
+        TypeMap<S, D> typeMap = mapper.createTypeMap(sourceType, destClass);
+        for (ExpressionMap<S, D> expressionMap : exprMap) {
+            typeMap.addMappings(expressionMap);
+        }
+        return typeMap.map(sourceType);
+    }
+
 }

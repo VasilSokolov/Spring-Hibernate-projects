@@ -10,6 +10,6 @@ import app.products.shop.model.entity.User;
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer> {
 
-	@Query(value = "SELECT u FROM User as u WHERE id = :id")
-	User getUser(@Param("id") Integer id);
+    @Query(value = "SELECT u FROM User as u WHERE id = :id")
+    User getUser(@Param("id") Integer id);
 }

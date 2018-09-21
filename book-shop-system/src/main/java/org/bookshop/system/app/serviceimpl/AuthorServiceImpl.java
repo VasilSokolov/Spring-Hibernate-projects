@@ -14,35 +14,32 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional
 public class AuthorServiceImpl implements AuthorService {
-	
-	private final AuthorRository authorRository;
-	private final BookRepository bookRepostory;
-		
-	@Autowired
-	public AuthorServiceImpl(AuthorRository authorRository, BookRepository bookRepostory) {
-		this.authorRository = authorRository;
-		this.bookRepostory = bookRepostory;
-	}
+
+    private final AuthorRository authorRository;
+    private final BookRepository bookRepostory;
+
+    @Autowired
+    public AuthorServiceImpl(AuthorRository authorRository, BookRepository bookRepostory) {
+        this.authorRository = authorRository;
+        this.bookRepostory = bookRepostory;
+    }
 
 
-
-	@Override
-	public void saveAuthorIntoDB(Author author) {
-		this.authorRository.saveAndFlush(author);
-	}
-
+    @Override
+    public void saveAuthorIntoDB(Author author) {
+        this.authorRository.saveAndFlush(author);
+    }
 
 
-	@Override
-	public void saveAuthorIntoDB(List<Author> authors) {
-		this.authorRository.saveAll(authors);
-	}
+    @Override
+    public void saveAuthorIntoDB(List<Author> authors) {
+        this.authorRository.saveAll(authors);
+    }
 
 
-
-	@Override
-	public List<Author> getAllAuthors() {
-		return this.authorRository.findAll();
-	}
+    @Override
+    public List<Author> getAllAuthors() {
+        return this.authorRository.findAll();
+    }
 
 }
