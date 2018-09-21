@@ -14,61 +14,61 @@ import javax.persistence.Table;
 @Table(name = "customers")
 public class Customer {
 
-	private Long id;
-	private String name;
-	private String email;
-	private String creditCardNumber;
-	private Set<Sale> sales;
-	
-	public Customer() {
-	}
+    private Long id;
+    private String name;
+    private String email;
+    private String creditCardNumber;
+    private Set<Sale> sales;
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long	getId() {
-		return id;
-	}
+    public Customer() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	@Column(name = "name")
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
 
-	@Column(name = "email")
-	public String getEmail() {
-		return email;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
 
-	@Column(name = "credit_card_number")
-	public String getCreditCardNumber() {
-		return creditCardNumber;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setCreditCardNumber(String creditCardNumber) {
-		this.creditCardNumber = creditCardNumber;
-	}
+    @Column(name = "credit_card_number")
+    public String getCreditCardNumber() {
+        return creditCardNumber;
+    }
 
-	@OneToMany(mappedBy = "customer")
-	public Set<Sale> getSales() {
-		return sales;
-	}
+    public void setCreditCardNumber(String creditCardNumber) {
+        this.creditCardNumber = creditCardNumber;
+    }
 
-	public void setSales(Set<Sale> sales) {
-		this.sales = sales;
-	}
-	
-	
+    @OneToMany(mappedBy = "customer")
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
+    }
+
+
 }

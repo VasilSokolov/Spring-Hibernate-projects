@@ -4,52 +4,52 @@ import com.google.gson.annotations.Expose;
 
 public class UserDto {
 
-	@Expose
-	private String email;
-	
-	@Expose
-	private String password;
+    @Expose
+    private String email;
 
-	@Expose
-	private String fullName;	
-	
-	public UserDto() {
-	}
+    @Expose
+    private String password;
 
-	public UserDto(String email, String password, String fullName) {
-		this.email = email;
-		this.password = password;
-		this.fullName = fullName;
-	}
+    @Expose
+    private String fullName;
 
-	public String getEmail() {
-		return email;
-	}
+    public UserDto() {
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    public UserDto(String email, String password, String fullName) {
+        this.email = email;
+        this.password = password;
+        this.fullName = fullName;
+    }
 
-	public String getPassword() {
-		return password;
-	}
+    public String getEmail() {
+        return email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public String getFullName() {
-		return fullName;
-	}
+    public String getPassword() {
+        return password;
+    }
 
-	public void setFullName(String fullName) {
-		this.fullName = fullName;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	@Override
-	public String toString() {
-		return "UserDto [email=" + email + ", password=" + password + ", fullName=" + fullName + "]";
-	}
-	
-	
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    @Override
+    public String toString() {
+        return "UserDto [email=" + email + ", password=" + password + ", fullName=" + fullName + "]";
+    }
+
+
 }

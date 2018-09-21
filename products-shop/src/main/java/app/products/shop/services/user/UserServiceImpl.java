@@ -21,33 +21,34 @@ import com.google.gson.reflect.TypeToken;
 @Transactional
 public class UserServiceImpl implements UserService {
 
-	private final UserRepository userRepository;
-	private final ModelMapper modelMapper;
+    private final UserRepository userRepository;
+    private final ModelMapper modelMapper;
 
-	@Autowired
-	public UserServiceImpl(UserRepository userRepository,
-							ModelMapper modelMapper) { 
-		this.userRepository = userRepository;
-		this.modelMapper = modelMapper;
-	}
+    @Autowired
+    public UserServiceImpl(UserRepository userRepository,
+                           ModelMapper modelMapper) {
+        this.userRepository = userRepository;
+        this.modelMapper = modelMapper;
+    }
 
-	@Override
-	public void save(UserCreateBindingModel model) {
-		User user = modelMapper.map(model, User.class);
-		this.userRepository.saveAndFlush(user);
-	}
+    @Override
+    public void save(UserCreateBindingModel model) {
+        User user = modelMapper.map(model, User.class);
+        this.userRepository.saveAndFlush(user);
+    }
 
-	@Override
-	public void saveAll(Collection<UserCreateBindingModel> models) {
-		Type listType = new TypeToken<ArrayList<User>>() {}.getType();
-		Collection<User> users = this.modelMapper.map(models, listType);
-		this.userRepository.saveAll(users);
-	}
+    @Override
+    public void saveAll(Collection<UserCreateBindingModel> models) {
+        Type listType = new TypeToken<ArrayList<User>>() {
+        }.getType();
+        Collection<User> users = this.modelMapper.map(models, listType);
+        this.userRepository.saveAll(users);
+    }
 
-	@Override
-	public User getUser(int id) {
-		
-		return this.userRepository.getUser(id);
+    @Override
+    public User getUser(int id) {
+
+        return this.userRepository.getUser(id);
 //		boolean isExist = this.userRepository.existsById(2);
 //		System.out.println(isExist);
 //		Optional<User> user = this.userRepository.findById(2);
@@ -57,6 +58,6 @@ public class UserServiceImpl implements UserService {
 //			return findUser;
 //		}
 //		return null;
-	}
+    }
 
 }

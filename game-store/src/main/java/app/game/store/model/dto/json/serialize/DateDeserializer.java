@@ -13,18 +13,18 @@ import com.google.gson.JsonParseException;
 
 public class DateDeserializer implements JsonDeserializer<Date> {
 
-	@Override
-	public Date deserialize(JsonElement element, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
-		String date = element.getAsString();
-		
-		SimpleDateFormat formatter = new SimpleDateFormat("M/d/yy hh:mm a");
-		formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-		
-		try {
-			return formatter.parse(date);
-		} catch (ParseException e) {
-			System.err.printf("Failed to parse Date due to:", e);
-			return null;
-		}
-	}
+    @Override
+    public Date deserialize(JsonElement element, Type arg1, JsonDeserializationContext arg2) throws JsonParseException {
+        String date = element.getAsString();
+
+        SimpleDateFormat formatter = new SimpleDateFormat("M/d/yy hh:mm a");
+        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        try {
+            return formatter.parse(date);
+        } catch (ParseException e) {
+            System.err.printf("Failed to parse Date due to:", e);
+            return null;
+        }
+    }
 }

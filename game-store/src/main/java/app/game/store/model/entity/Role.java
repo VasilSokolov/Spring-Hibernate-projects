@@ -14,40 +14,40 @@ import javax.persistence.Table;
 @Table(name = "roles")
 public class Role {
 
-	private Long id;
-	private String name;
-	private Set<User> users;
-	
-	public Role(Set<User> users) {
-		this.users = new HashSet<>();
-	}
+    private Long id;
+    private String name;
+    private Set<User> users;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public Role(Set<User> users) {
+        this.users = new HashSet<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	@ManyToMany
-	public Set<User> getUsers() {
-		return users;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-	
-	
+    @ManyToMany
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+
 }

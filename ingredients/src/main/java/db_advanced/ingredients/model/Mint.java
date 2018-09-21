@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 @DiscriminatorValue(value = "Mint")
 public class Mint extends BasicIngredient {
 
-	public Mint() {
-		super("Mint", BigDecimal.valueOf(2.34));
-	}
+    public Mint() {
+        super("Mint", BigDecimal.valueOf(2.34));
+    }
 }

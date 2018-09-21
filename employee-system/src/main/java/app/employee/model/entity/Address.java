@@ -14,59 +14,59 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="addresses")
+@Table(name = "addresses")
 public class Address {
 
-	private Long id;
-	private String street;
-	private City city;
-	private Set<Employee> employees;
-	
-	public Address() {
-	}
+    private Long id;
+    private String street;
+    private City city;
+    private Set<Employee> employees;
 
-	public Address(String street, City city) {
-		this.street = street;
-		this.city = city;
-		this.employees = new HashSet<>();
-	}
+    public Address() {
+    }
 
-	@Id
-	@Column(name="id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public Address(String street, City city) {
+        this.street = street;
+        this.city = city;
+        this.employees = new HashSet<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public String getStreet() {
+        return street;
+    }
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	public City getCity() {
-		return city;
-	}
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-	public void setCity(City city) {
-		this.city = city;
-	}
+    @ManyToOne(cascade = CascadeType.ALL)
+    public City getCity() {
+        return city;
+    }
 
-	@OneToMany(mappedBy = "address")
-	public Set<Employee> getEmployees() {
-		return employees;
-	}
+    public void setCity(City city) {
+        this.city = city;
+    }
 
-	public void setEmployees(Set<Employee> employees) {
-		this.employees = employees;
-	}
+    @OneToMany(mappedBy = "address")
+    public Set<Employee> getEmployees() {
+        return employees;
+    }
 
-	
+    public void setEmployees(Set<Employee> employees) {
+        this.employees = employees;
+    }
+
+
 }

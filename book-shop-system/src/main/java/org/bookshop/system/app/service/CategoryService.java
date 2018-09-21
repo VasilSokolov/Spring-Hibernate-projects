@@ -6,7 +6,7 @@ import org.bookshop.system.app.model.entity.Category;
 
 public interface CategoryService {
 
-	void saveCategoriesIntoDb(List<Category> categories);
+    void saveCategoriesIntoDb(List<Category> categories);
 
-	List<Category> getAll();
+    List<Category> getAll();
 }

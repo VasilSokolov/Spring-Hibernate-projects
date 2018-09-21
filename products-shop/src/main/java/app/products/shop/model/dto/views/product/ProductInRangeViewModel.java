@@ -12,54 +12,54 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProductInRangeViewModel implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	@XmlAttribute(name = "name")
-	private String name;
-	
-	@XmlAttribute(name = "price")
-	private BigDecimal price;
-	
-	@XmlAttribute(name = "seller")
-	private String seller;	
-	
-	public ProductInRangeViewModel() {
-	}
+    private static final long serialVersionUID = 1L;
 
-	public ProductInRangeViewModel(String name, BigDecimal price, String seller) {
-		this.name = name;
-		this.price = price;
-		this.seller = seller;
-	}
+    @XmlAttribute(name = "name")
+    private String name;
 
-	public String getName() {
-		return name;
-	}
+    @XmlAttribute(name = "price")
+    private BigDecimal price;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @XmlAttribute(name = "seller")
+    private String seller;
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public ProductInRangeViewModel() {
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public ProductInRangeViewModel(String name, BigDecimal price, String seller) {
+        this.name = name;
+        this.price = price;
+        this.seller = seller;
+    }
 
-	public String getSeller() {
-		return seller;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setSeller(String seller) {
-		this.seller = seller;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	@Override
-	public String toString() {
-		return "ProductInRangeViewModel [name=" + name + ", price=" + price + ", seller=" + seller + "]";
-	}
-	
-	
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    public String getSeller() {
+        return seller;
+    }
+
+    public void setSeller(String seller) {
+        this.seller = seller;
+    }
+
+    @Override
+    public String toString() {
+        return "ProductInRangeViewModel [name=" + name + ", price=" + price + ", seller=" + seller + "]";
+    }
+
+
 }

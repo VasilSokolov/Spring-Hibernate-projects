@@ -14,33 +14,33 @@ import app.products.shop.utils.config.ModelMapperConfig;
 @Configuration
 public class BeanRegister {
 
-	private final ResourceLoader resourceLoader;
-	
-	@Autowired
-	public BeanRegister(ResourceLoader resourceLoader) {
-		this.resourceLoader = resourceLoader;
-	}
-	public ResourceLoader getResourceLoader() {
-		return resourceLoader;
-	}
+    private final ResourceLoader resourceLoader;
+
+    @Autowired
+    public BeanRegister(ResourceLoader resourceLoader) {
+        this.resourceLoader = resourceLoader;
+    }
+
+    public ResourceLoader getResourceLoader() {
+        return resourceLoader;
+    }
 
 
+    @Bean
+    public Gson getGson() {
 
-	@Bean
-	public Gson getGson() {
-		
-		return new GsonBuilder()
-				.setPrettyPrinting()
-				.create();
-		
+        return new GsonBuilder()
+                .setPrettyPrinting()
+                .create();
+
 //		return new GsonBuilder()
 //				.excludeFieldsWithoutExposeAnnotation()
 //				.setPrettyPrinting()
 //				.create();
-	}
-	
-	@Bean
-	public ModelMapper getMapper () {
-		return new ModelMapper();
-	}
+    }
+
+    @Bean
+    public ModelMapper getMapper() {
+        return new ModelMapper();
+    }
 }

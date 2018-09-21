@@ -10,13 +10,13 @@ import org.springframework.data.repository.query.Param;
 
 public interface BookService {
 
-	void saveIntoDB(List<Book> books);
-	
-	List<String> allTitlesAfterYear(Date year);
-	
-	List<String> getAllBooksTitleByAgeRestriction(AgeRestriction ageRestriction);
-	
-	List<BookReleasedDto> allBooksByReleaseDateBefore(Date beforeDate);
-	
-	long deleteAllBySomeNumber(Integer count);
+    void saveIntoDB(List<Book> books);
+
+    List<String> allTitlesAfterYear(Date year);
+
+    List<String> getAllBooksTitleByAgeRestriction(AgeRestriction ageRestriction);
+
+    List<BookReleasedDto> allBooksByReleaseDateBefore(Date beforeDate);
+
+    long deleteAllBySomeNumber(Integer count);
 }

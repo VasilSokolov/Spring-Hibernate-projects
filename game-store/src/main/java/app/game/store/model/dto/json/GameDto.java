@@ -20,134 +20,134 @@ import com.google.gson.annotations.SerializedName;
 @XmlAccessorType(value = XmlAccessType.FIELD)
 public class GameDto {
 
-	@Expose(serialize = true, deserialize = false)
-	@XmlAttribute(name = "id")
-	private Long id;
+    @Expose(serialize = true, deserialize = false)
+    @XmlAttribute(name = "id")
+    private Long id;
 
-	@Expose
-	@NotNull
-	@Size(min = 2, max = 20, message = "Invalid title, must be between 2 and 30")
-	@XmlElement
-	private String title;
+    @Expose
+    @NotNull
+    @Size(min = 2, max = 20, message = "Invalid title, must be between 2 and 30")
+    @XmlElement
+    private String title;
 
-	@Expose
-	private String youtubeId;
+    @Expose
+    private String youtubeId;
 
-	@Expose
-	@SerializedName("imageUrk")
-	private String imageUrl;
+    @Expose
+    @SerializedName("imageUrk")
+    private String imageUrl;
 
-	@Expose
-	private Double size;
-	
-	@Expose
-	private BigDecimal price;
-	
-	@Expose
-	private String description;
-	
-//	@Expose
-	private Date releaseDate;
-	
-	@Expose
-	@XmlElementWrapper(name = "users")
-	@XmlElement(name = "user")
-	private Set<UserDto> users;
+    @Expose
+    private Double size;
 
-	public GameDto() {
-	}	
+    @Expose
+    private BigDecimal price;
 
-	public GameDto(Long id, String title, String youtubeId, String imageUrl, Double size, BigDecimal price,
-			String description, Date releaseDate, Set<UserDto> users) {
-		this.id = id;
-		this.title = title;
-		this.youtubeId = youtubeId;
-		this.imageUrl = imageUrl;
-		this.size = size;
-		this.price = price;
-		this.description = description;
-		this.releaseDate = releaseDate;
-		this.users = users;
-	}
+    @Expose
+    private String description;
 
-	public Long getId() {
-		return id;
-	}
+    //	@Expose
+    private Date releaseDate;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Expose
+    @XmlElementWrapper(name = "users")
+    @XmlElement(name = "user")
+    private Set<UserDto> users;
 
-	public String getTitle() {
-		return title;
-	}
+    public GameDto() {
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public GameDto(Long id, String title, String youtubeId, String imageUrl, Double size, BigDecimal price,
+                   String description, Date releaseDate, Set<UserDto> users) {
+        this.id = id;
+        this.title = title;
+        this.youtubeId = youtubeId;
+        this.imageUrl = imageUrl;
+        this.size = size;
+        this.price = price;
+        this.description = description;
+        this.releaseDate = releaseDate;
+        this.users = users;
+    }
 
-	public String getYoutubeId() {
-		return youtubeId;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setYoutubeId(String youtubeId) {
-		this.youtubeId = youtubeId;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public Double getSize() {
-		return size;
-	}
+    public String getYoutubeId() {
+        return youtubeId;
+    }
 
-	public void setSize(Double size) {
-		this.size = size;
-	}
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public Double getSize() {
+        return size;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setSize(Double size) {
+        this.size = size;
+    }
 
-	public Date getReleaseDate() {
-		return releaseDate;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setReleaseDate(Date releaseDate) {
-		this.releaseDate = releaseDate;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public Set<UserDto> getUsers() {
-		return users;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public void setUsers(Set<UserDto> users) {
-		this.users = users;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	@Override
-	public String toString() {
-		return "GameDto [id=" + id + ", title=" + title + ", youtubeId=" + youtubeId + ", imageUrl=" + imageUrl
-				+ ", size=" + size + ", price=" + price + ", description=" + description + ", releaseDate="
-				+ releaseDate + ", users=" + users + "]";
-	}
-	
-	
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
+
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    public Set<UserDto> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<UserDto> users) {
+        this.users = users;
+    }
+
+    @Override
+    public String toString() {
+        return "GameDto [id=" + id + ", title=" + title + ", youtubeId=" + youtubeId + ", imageUrl=" + imageUrl
+                + ", size=" + size + ", price=" + price + ", description=" + description + ", releaseDate="
+                + releaseDate + ", users=" + users + "]";
+    }
+
+
 }

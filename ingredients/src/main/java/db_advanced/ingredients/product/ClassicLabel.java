@@ -15,55 +15,55 @@ import javax.persistence.Table;
 @Table(name = "label")
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ClassicLabel {
-	
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
 
-	@Basic
-	private String title;
-	
-	@Basic
-	private String subtitle;
-	
-	@OneToOne(mappedBy = "label", targetEntity = BasicShampoo.class)
-	private BasicShampoo basicShampoo;
-	
-	public ClassicLabel(String title, String subtitle) {
-		this.title = title;
-		this.subtitle = subtitle;
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+
+    @Basic
+    private String title;
+
+    @Basic
+    private String subtitle;
+
+    @OneToOne(mappedBy = "label", targetEntity = BasicShampoo.class)
+    private BasicShampoo basicShampoo;
+
+    public ClassicLabel(String title, String subtitle) {
+        this.title = title;
+        this.subtitle = subtitle;
 //		this.basicShampoo = basicShampoo;
-	}
+    }
 
-	public ClassicLabel() {
-	}
+    public ClassicLabel() {
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getSubtitle() {
-		return subtitle;
-	}
+    public String getSubtitle() {
+        return subtitle;
+    }
 
-	public void setSubtitle(String subtitle) {
-		this.subtitle = subtitle;
-	}
+    public void setSubtitle(String subtitle) {
+        this.subtitle = subtitle;
+    }
 
-	public int getId() {
-		return id;
-	}
+    public int getId() {
+        return id;
+    }
 
-	public BasicShampoo getBasicShampoo() {
-		return basicShampoo;
-	}
+    public BasicShampoo getBasicShampoo() {
+        return basicShampoo;
+    }
 
-	public void setBasicShampoo(BasicShampoo basicShampoo) {
-		this.basicShampoo = basicShampoo;
-	}
+    public void setBasicShampoo(BasicShampoo basicShampoo) {
+        this.basicShampoo = basicShampoo;
+    }
 }

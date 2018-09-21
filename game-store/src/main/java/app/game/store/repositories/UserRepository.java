@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import app.game.store.model.entity.User;
 
 @Repository
-public interface UserRepository extends JpaRepository<User,Long> {
+public interface UserRepository extends JpaRepository<User, Long> {
 
 
 }

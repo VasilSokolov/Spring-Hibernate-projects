@@ -11,47 +11,47 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="cities")
+@Table(name = "cities")
 public class City {
 
-	private Long id;
-	private String name;
-	private Set<Address> addresses;
-	
-	public City() {
-	}
+    private Long id;
+    private String name;
+    private Set<Address> addresses;
 
-	public City(String name) {
-		this.name = name;
-		this.addresses = new HashSet<>();
-	}
+    public City() {
+    }
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public City(String name) {
+        this.name = name;
+        this.addresses = new HashSet<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	@OneToMany(mappedBy = "city")
-	public Set<Address> getAddresses() {
-		return addresses;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
-	}
-	
-	
+    @OneToMany(mappedBy = "city")
+    public Set<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(Set<Address> addresses) {
+        this.addresses = addresses;
+    }
+
+
 }

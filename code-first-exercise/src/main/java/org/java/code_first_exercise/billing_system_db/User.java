@@ -14,71 +14,71 @@ import javax.persistence.Table;
 @Table(name = "users")
 public class User {
 
-	private Long id;
-	private String firstName;
-	private String lastname;
-	private String email;
-	private String password;
-	private Set<BasicBillingDetail> billingDetails;
-	
-	public User() {
-	}
+    private Long id;
+    private String firstName;
+    private String lastname;
+    private String email;
+    private String password;
+    private Set<BasicBillingDetail> billingDetails;
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public User() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	@Column(name = "first_name")
-	public String getFirstName() {
-		return firstName;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    @Column(name = "first_name")
+    public String getFirstName() {
+        return firstName;
+    }
 
-	@Column(name = "last_name")
-	public String getLastname() {
-		return lastname;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public void setLastname(String lastname) {
-		this.lastname = lastname;
-	}
+    @Column(name = "last_name")
+    public String getLastname() {
+        return lastname;
+    }
 
-	@Column(name = "email")
-	public String getEmail() {
-		return email;
-	}
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
+    @Column(name = "email")
+    public String getEmail() {
+        return email;
+    }
 
-	@Column(name = "password")
-	public String getPassword() {
-		return password;
-	}
+    public void setEmail(String email) {
+        this.email = email;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-	}
+    @Column(name = "password")
+    public String getPassword() {
+        return password;
+    }
 
-	@OneToMany(mappedBy = "owner")
-	public Set<BasicBillingDetail> getBillingDetails() {
-		return billingDetails;
-	}
+    public void setPassword(String password) {
+        this.password = password;
+    }
 
-	public void setBillingDetails(Set<BasicBillingDetail> billingDetails) {
-		this.billingDetails = billingDetails;
-	}
-	
-	
+    @OneToMany(mappedBy = "owner")
+    public Set<BasicBillingDetail> getBillingDetails() {
+        return billingDetails;
+    }
+
+    public void setBillingDetails(Set<BasicBillingDetail> billingDetails) {
+        this.billingDetails = billingDetails;
+    }
+
+
 }

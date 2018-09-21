@@ -16,89 +16,89 @@ import javax.persistence.Table;
 @Table(name = "courses")
 public class Course {
 
-	private Long id;
-	private String name;
-	private String description;
-	private Date startDate;
-	private Date endDate;
-	private Integer credits;
-	private Teacher teacher;
-	private Set<Student> students;
-	
-	public Course() {
-	}
+    private Long id;
+    private String name;
+    private String description;
+    private Date startDate;
+    private Date endDate;
+    private Integer credits;
+    private Teacher teacher;
+    private Set<Student> students;
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public Course() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	@Column(name = "name")
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
 
-	@Column(name = "desciption")
-	public String getDescription() {
-		return description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    @Column(name = "desciption")
+    public String getDescription() {
+        return description;
+    }
 
-	@Column(name = "start_date")
-	public Date getStartDate() {
-		return startDate;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	public void setStartDate(Date startDate) {
-		this.startDate = startDate;
-	}
+    @Column(name = "start_date")
+    public Date getStartDate() {
+        return startDate;
+    }
 
-	@Column(name = "end_date")
-	public Date getEndDate() {
-		return endDate;
-	}
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
 
-	public void setEndDate(Date endDate) {
-		this.endDate = endDate;
-	}
+    @Column(name = "end_date")
+    public Date getEndDate() {
+        return endDate;
+    }
 
-	@Column(name = "credits")
-	public Integer getCredits() {
-		return credits;
-	}
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
 
-	public void setCredits(Integer credits) {
-		this.credits = credits;
-	}
+    @Column(name = "credits")
+    public Integer getCredits() {
+        return credits;
+    }
 
-	@ManyToOne(targetEntity = Teacher.class)
-	public Teacher getTeacher() {
-		return teacher;
-	}
+    public void setCredits(Integer credits) {
+        this.credits = credits;
+    }
 
-	public void setTeacher(Teacher teacher) {
-		this.teacher = teacher;
-	}
-	
-	@ManyToMany(mappedBy = "enrolledCourses")
-	public Set<Student> getStudents() {
-		return students;
-	}
+    @ManyToOne(targetEntity = Teacher.class)
+    public Teacher getTeacher() {
+        return teacher;
+    }
 
-	public void setStudents(Set<Student> students) {
-		this.students = students;
-	}
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
+    }
+
+    @ManyToMany(mappedBy = "enrolledCourses")
+    public Set<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(Set<Student> students) {
+        this.students = students;
+    }
 }

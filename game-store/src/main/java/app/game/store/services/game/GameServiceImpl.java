@@ -12,24 +12,24 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 public class GameServiceImpl implements GameService {
 
-	private final GameRepository gameRepository;
-	private final ModelMapper modelMapper;
+    private final GameRepository gameRepository;
+    private final ModelMapper modelMapper;
 
-	@Autowired
-	public GameServiceImpl(GameRepository gameRepository, ModelMapper modelMapper) { 
-		this.gameRepository = gameRepository;
-		this.modelMapper = modelMapper;
-	}
+    @Autowired
+    public GameServiceImpl(GameRepository gameRepository, ModelMapper modelMapper) {
+        this.gameRepository = gameRepository;
+        this.modelMapper = modelMapper;
+    }
 
-	@Override
-	public void test() {
-		String debug="";
-		System.out.println(debug);
-	}
+    @Override
+    public void test() {
+        String debug = "";
+        System.out.println(debug);
+    }
 
-	@Override
-	public Game create(Game game) {
-		return gameRepository.save(game);
-	}
+    @Override
+    public Game create(Game game) {
+        return gameRepository.save(game);
+    }
 
 }

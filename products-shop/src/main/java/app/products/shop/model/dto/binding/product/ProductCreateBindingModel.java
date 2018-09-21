@@ -5,45 +5,45 @@ import java.math.BigDecimal;
 
 public class ProductCreateBindingModel implements Serializable {
 
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	private BigDecimal price;
-	private Integer buyer;
-	private Integer seller;
-	
-	public ProductCreateBindingModel() {
-	}
+    private static final long serialVersionUID = 1L;
 
-	public String getName() {
-		return name;
-	}
+    private String name;
+    private BigDecimal price;
+    private Integer buyer;
+    private Integer seller;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public ProductCreateBindingModel() {
+    }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public Integer getBuyer() {
-		return buyer;
-	}
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setBuyer(Integer buyer) {
-		this.buyer = buyer;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public Integer getSeller() {
-		return seller;
-	}
+    public Integer getBuyer() {
+        return buyer;
+    }
 
-	public void setSeller(Integer seller) {
-		this.seller = seller;
-	}
+    public void setBuyer(Integer buyer) {
+        this.buyer = buyer;
+    }
+
+    public Integer getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Integer seller) {
+        this.seller = seller;
+    }
 }

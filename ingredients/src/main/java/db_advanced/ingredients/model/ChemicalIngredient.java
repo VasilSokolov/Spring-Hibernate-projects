@@ -7,24 +7,24 @@ import javax.persistence.Entity;
 
 
 @Entity
-public abstract class ChemicalIngredient extends BasicIngredient implements ChemicalIngredients{
+public abstract class ChemicalIngredient extends BasicIngredient implements ChemicalIngredients {
 
-	@Column(name = "chemical_formula")
-	private String chemicalFormula;
-	
-	public ChemicalIngredient() {
-	}
-	
-	public ChemicalIngredient(String name, BigDecimal price, String chemicalFormula) {
-		super(name, price);
-		this.chemicalFormula = chemicalFormula;
-	}
+    @Column(name = "chemical_formula")
+    private String chemicalFormula;
 
-	public String getChemicalFormula() {
-		return chemicalFormula;
-	}
+    public ChemicalIngredient() {
+    }
 
-	public void setChemicalFormula(String chemicalFormula) {
-		this.chemicalFormula = chemicalFormula;
-	}
+    public ChemicalIngredient(String name, BigDecimal price, String chemicalFormula) {
+        super(name, price);
+        this.chemicalFormula = chemicalFormula;
+    }
+
+    public String getChemicalFormula() {
+        return chemicalFormula;
+    }
+
+    public void setChemicalFormula(String chemicalFormula) {
+        this.chemicalFormula = chemicalFormula;
+    }
 }

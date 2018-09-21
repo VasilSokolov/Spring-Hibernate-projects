@@ -14,106 +14,108 @@ import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
+
 import app.game.store.model.validator.URL;
 
 @Entity
 @Table(name = "games")
 public class Game {
 
-	private Long id;
-	private String title;
-	private String youtubeId;
-	private String imageUrl;
-	private Double size;
-	private BigDecimal price;
-	private String description;
-	private Date releaseDate;
-	private Set<User> users;
-	
-	public Game() {
-		this.users = new HashSet<>();
-	}
+    private Long id;
+    private String title;
+    private String youtubeId;
+    private String imageUrl;
+    private Double size;
+    private BigDecimal price;
+    private String description;
+    private Date releaseDate;
+    private Set<User> users;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public Game() {
+        this.users = new HashSet<>();
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	@Pattern(regexp = "^[A-z][a-zA-Z0-9 ]{2,100}$")
-	public String getTitle() {
-		return title;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
-	@Pattern(regexp = "^https:\\/\\/www\\.youtube\\.com\\/watch\\?v=[a-zA-Z]{11}")
-	public String getYoutubeId() {
-		return youtubeId;
-	}
+    @Pattern(regexp = "^[A-z][a-zA-Z0-9 ]{2,100}$")
+    public String getTitle() {
+        return title;
+    }
 
-	public void setYoutubeId(String youtubeId) {
-		this.youtubeId = youtubeId;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	@URL
-	public String getImageUrl() {
-		return imageUrl;
-	}
+    @Pattern(regexp = "^https:\\/\\/www\\.youtube\\.com\\/watch\\?v=[a-zA-Z]{11}")
+    public String getYoutubeId() {
+        return youtubeId;
+    }
 
-	public void setImageUrl(String imageUrl) {
-		this.imageUrl = imageUrl;
-	}
+    public void setYoutubeId(String youtubeId) {
+        this.youtubeId = youtubeId;
+    }
 
-	@Column(columnDefinition = "DOUBLE(10,1) DEFAULT 0.0")
-	public Double getSize() {
-		return size;
-	}
+    @URL
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
-	public void setSize(Double size) {
-		this.size = size;
-	}
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
-	@Column(precision=20, scale = 2)
-	public BigDecimal getPrice() {
-		return price;
-	}
+    @Column(columnDefinition = "DOUBLE(10,1) DEFAULT 0.0")
+    public Double getSize() {
+        return size;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+    public void setSize(Double size) {
+        this.size = size;
+    }
 
-	@Column(columnDefinition = "TEXT", length =20)
-	@Size(min = 20)
-	public String getDescription() {
-		return description;
-	}
+    @Column(precision = 20, scale = 2)
+    public BigDecimal getPrice() {
+        return price;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
-	public Date getReleaseDate() {
-		return releaseDate;
-	}
+    @Column(columnDefinition = "TEXT", length = 20)
+    @Size(min = 20)
+    public String getDescription() {
+        return description;
+    }
 
-	public void setReleaseDate(Date releaseDate) {
-		this.releaseDate = releaseDate;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
-	@ManyToMany(mappedBy = "games")
-	public Set<User> getUsers() {
-		return users;
-	}
+    public Date getReleaseDate() {
+        return releaseDate;
+    }
 
-	public void setUsers(Set<User> users) {
-		this.users = users;
-	}
-	
-	
+    public void setReleaseDate(Date releaseDate) {
+        this.releaseDate = releaseDate;
+    }
+
+    @ManyToMany(mappedBy = "games")
+    public Set<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(Set<User> users) {
+        this.users = users;
+    }
+
+
 }

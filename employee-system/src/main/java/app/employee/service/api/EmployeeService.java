@@ -4,5 +4,5 @@ import app.employee.model.entity.Employee;
 
 public interface EmployeeService {
 
-	public void registerEmployee(Employee employee);
+    public void registerEmployee(Employee employee);
 }

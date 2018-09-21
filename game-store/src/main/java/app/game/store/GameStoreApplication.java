@@ -14,15 +14,15 @@ import app.game.store.config.ModelMapperConfig;
 @PropertySource(value = {"classpath:app.properties", "classpath:local.properties"})
 public class GameStoreApplication {
 
-	public static void main(String[] args) {
+    public static void main(String[] args) {
 //		ANSRBuilder.run(Strategy.REPOSITORIES_AND_SERVICES(), GameStoreApplication.class, args);
-		SpringApplication.run(GameStoreApplication.class, args);
-	}
-	
-	@Bean
-	public ModelMapper getMapper() {
-		ModelMapper modelMapper = new ModelMapper();
-		ModelMapperConfig config = new ModelMapperConfig(modelMapper);
-		return modelMapper;
-	}
+        SpringApplication.run(GameStoreApplication.class, args);
+    }
+
+    @Bean
+    public ModelMapper getMapper() {
+        ModelMapper modelMapper = new ModelMapper();
+        ModelMapperConfig config = new ModelMapperConfig(modelMapper);
+        return modelMapper;
+    }
 }

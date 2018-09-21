@@ -15,52 +15,51 @@ import javax.persistence.Table;
 @Table(name = "products")
 public class Product {
 
-	private Long id;
-	private String name;
-	private BigDecimal price;
-	private Set<Sale> sales;
-	
-	public Product() {
-	}
+    private Long id;
+    private String name;
+    private BigDecimal price;
+    private Set<Sale> sales;
 
-	@Id
-	@Column(name = "id")
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	public Long getId() {
-		return id;
-	}
+    public Product() {
+    }
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long getId() {
+        return id;
+    }
 
-	@Column(name = "name", length = 50)
-	public String getName() {
-		return name;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
-	
-	@Column(name = "price")
-	public BigDecimal getPrice() {
-		return price;
-	}
+    @Column(name = "name", length = 50)
+    public String getName() {
+        return name;
+    }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
-	
-	@OneToMany(mappedBy = "product")
-	public Set<Sale> getSales() {
-		return sales;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setSales(Set<Sale> sales) {
-		this.sales = sales;
-	}
-	
-	
-	
+    @Column(name = "price")
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
+
+    @OneToMany(mappedBy = "product")
+    public Set<Sale> getSales() {
+        return sales;
+    }
+
+    public void setSales(Set<Sale> sales) {
+        this.sales = sales;
+    }
+
+
 }
