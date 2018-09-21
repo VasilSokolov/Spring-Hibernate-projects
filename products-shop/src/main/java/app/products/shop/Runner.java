@@ -2,11 +2,18 @@ package app.products.shop;
 
 import java.io.InputStream;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
+import java.util.Set;
 
 import javax.transaction.Transactional;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -24,6 +31,8 @@ import app.products.shop.model.dto.binding.user.UserCreateBindingModel;
 import app.products.shop.model.dto.binding.user.UserCreateWrapper;
 import app.products.shop.model.dto.views.product.ProductInRangeViewModel;
 import app.products.shop.model.dto.views.product.ProductInRangeWrapper;
+import app.products.shop.model.entity.Category;
+import app.products.shop.model.entity.Product;
 import app.products.shop.model.entity.User;
 import app.products.shop.services.category.CategoryService;
 import app.products.shop.services.product.ProductService;
@@ -64,6 +73,10 @@ public class Runner implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+		Product p = new Product("pesho", new BigDecimal(222.3).setScale(2, RoundingMode.CEILING), new User(), new User());
+		Object t = new Category("one category", new HashSet<>(Arrays.asList(p)));
+		Validation.buildDefaultValidatorFactory().getValidator().validate(t);
+		
 		System.out.println("Running");
 //		this.seedUsers();
 //		this.seedProducts();
